@@ -4822,7 +4822,7 @@ GameObject:
   - component: {fileID: 19885060}
   - component: {fileID: 19970182}
   m_Layer: 0
-  m_Name: GunShot_Smoke_FX
+  m_Name: GunShot_Smoke_FX 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4927,8 +4927,8 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 0.5
-      minScalar: 0.1
+      scalar: 1
+      minScalar: 0.5
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -4962,8 +4962,8 @@ ParticleSystem:
     startSpeed:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 0.5
-      minScalar: 0.1
+      scalar: 2.5
+      minScalar: 0.5
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -5061,7 +5061,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 3
       scalar: 0.1
-      minScalar: 0.01
+      minScalar: 0.02
       maxCurve:
         serializedVersion: 2
         m_Curve:
