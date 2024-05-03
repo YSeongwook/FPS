@@ -31,7 +31,7 @@ public class PlayerController : MonoBehaviour
     private bool isReload = false;
 
     [Header("Zoom")]
-    public GameObject crosHair;
+    public GameObject crossHair;
 
     void Start()
     {
@@ -188,12 +188,12 @@ public class PlayerController : MonoBehaviour
         if (isClick == 1)
         {
             isZoom = true;
-            crosHair.SetActive(true);
+            crossHair.SetActive(true);
         }
         else
         {
             isZoom = false;
-            crosHair.SetActive(true);
+            crossHair.SetActive(true);
         }
         SetCamType(isZoom);
     }
