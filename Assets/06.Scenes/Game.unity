@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.1827969, g: 0.22850077, b: 0.30701667, a: 1}
+  m_IndirectSpecularColor: {r: 0.18279709, g: 0.22850122, b: 0.3070176, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &4
 LightmapSettings:
@@ -18486,7 +18486,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 449203694}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.001, y: 0.126, z: 0.305}
+  m_LocalPosition: {x: 0, y: 0.2, z: 0.195}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -21643,6 +21643,7 @@ MonoBehaviour:
   bullet: {fileID: 1003485616670832, guid: 2298236a23b5c4349b5f8204068aadf3, type: 3}
   bullet_Shell: {fileID: 131604, guid: 8698f59a8ea9a0c449a001968fa1db7f, type: 3}
   shell: 30
+  crosHair: {fileID: 1850193528}
 --- !u!1001 &486752744
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -34094,7 +34095,7 @@ Camera:
     height: 1
   near clip plane: 0.1
   far clip plane: 5000
-  field of view: 40
+  field of view: 30
   orthographic: 0
   orthographic size: 10
   m_Depth: 0
@@ -57296,6 +57297,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Wep_Crosshair_Sniper_01
       objectReference: {fileID: 0}
+    - target: {fileID: 1333989791776068, guid: 53b9d63d478bf404aa635a330f18efdc, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4410105576256902, guid: 53b9d63d478bf404aa635a330f18efdc, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -57306,11 +57311,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4410105576256902, guid: 53b9d63d478bf404aa635a330f18efdc, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.1298
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 4410105576256902, guid: 53b9d63d478bf404aa635a330f18efdc, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.3413
+      value: 0.341
       objectReference: {fileID: 0}
     - target: {fileID: 4410105576256902, guid: 53b9d63d478bf404aa635a330f18efdc, type: 3}
       propertyPath: m_LocalRotation.w
@@ -71248,7 +71253,7 @@ MonoBehaviour:
   m_LookAt: {fileID: 0}
   m_Follow: {fileID: 0}
   m_Lens:
-    FieldOfView: 40
+    FieldOfView: 30
     OrthographicSize: 10
     NearClipPlane: 0.1
     FarClipPlane: 5000
@@ -78874,6 +78879,11 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 4996543868091060, guid: d4725f49d59dd1347a470fd3ff9c880f, type: 3}
   m_PrefabInstance: {fileID: 1846579542}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1850193528 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1333989791776068, guid: 53b9d63d478bf404aa635a330f18efdc, type: 3}
+  m_PrefabInstance: {fileID: 1316300379}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1851558200
 PrefabInstance:
