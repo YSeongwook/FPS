@@ -17,13 +17,8 @@ namespace EnumTypes
         Player,
         World,
         Enemy,
-        EnemySolid,
-        FreeMan,
-        Building,
-        Walkable,
+        Building
     }
-
-    public enum Missions { Home = 0, Mission1, Mission2, Mission3, Mission3Boss }
 
     public enum LauncherType
     {
@@ -43,7 +38,6 @@ namespace EnumTypes
     {
         PlayerDead,
         PlayerSpawned,
-        PlayerStabbed,
         PlayerInactive,
         PlayerDamaged,
 
@@ -55,9 +49,7 @@ namespace EnumTypes
         KnifeUsed,
         GunUsed,
         GrenadeUsed,
-        WaveEventEnd,
 
-        MissionStartRequest,
         MissionStart,
         MissionEnd,
         MissionSuccess,
