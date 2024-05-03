@@ -5,7 +5,7 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
-    // 수정 테스트
+    // 수정 테스트 2
     [SerializeField] private GameObject tpsVCam;
     [SerializeField] private CinemachineVirtualCamera fpsVCam;
     [SerializeField] private Transform weaponPos;
