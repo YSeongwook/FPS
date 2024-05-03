@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.30692244, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1022,7 +1022,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 332961270}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 814843477}
+        m_TargetAssemblyTypeName: OnlineUI, Assembly-CSharp
+        m_MethodName: OnClickEnterGameRoomButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &332961270
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3619,18 +3631,19 @@ MonoBehaviour:
   sendRate: 60
   autoStartServerBuild: 0
   autoConnectClientBuild: 0
-  offlineScene: Assets/06.Scenes/Main Menu.unity
-  onlineScene: Assets/06.Scenes/Game Room.unity
+  offlineScene: Assets/06.Scenes/SceneNetwork/Main Menu.unity
+  onlineScene: Assets/06.Scenes/SceneNetwork/Game Room.unity
   transport: {fileID: 0}
   networkAddress: localhost
   maxConnections: 100
   disconnectInactiveConnections: 0
   disconnectInactiveTimeout: 60
   authenticator: {fileID: 0}
-  playerPrefab: {fileID: 6711991373773274042, guid: 197b07b8a5b7c544096fa6629079ccce, type: 3}
+  playerPrefab: {fileID: 2689949606270854294, guid: de8846b3b844fee49ae93bcd91d36152, type: 3}
   autoCreatePlayer: 1
   playerSpawnMethod: 0
-  spawnPrefabs: []
+  spawnPrefabs:
+  - {fileID: 1580760483366548956, guid: 2b75c30c49731904ca926932b72226fb, type: 3}
   exceptionsDisconnect: 1
   snapshotSettings:
     bufferTimeMultiplier: 2
@@ -3648,9 +3661,9 @@ MonoBehaviour:
   timeInterpolationGui: 0
   showRoomGUI: 1
   minPlayers: 1
-  roomPlayerPrefab: {fileID: 444435816, guid: 11a63e7015af98f4c96193dc45657b1b, type: 3}
-  RoomScene: Assets/06.Scenes/Game Room.unity
-  GameplayScene: Assets/06.Scenes/Game.unity
+  roomPlayerPrefab: {fileID: 2119461976507011027, guid: a2cf2b5eb8279624db90c8ca97147cf1, type: 3}
+  RoomScene: Assets/06.Scenes/SceneNetwork/Game Room.unity
+  GameplayScene: Assets/06.Scenes/SceneNetwork/Game_Clone.unity
   _allPlayersReady: 0
   roomSlots: []
   clientIndex: 0
