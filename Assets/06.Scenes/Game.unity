@@ -97119,6 +97119,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1906946166920777490, guid: bac72f37cec62a04a8d9842a89b23fe1, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7700798653778119487, guid: bac72f37cec62a04a8d9842a89b23fe1, type: 3}
       propertyPath: m_Name
       value: DamageZone
