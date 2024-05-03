@@ -207,7 +207,8 @@ public class PlayerController : MonoBehaviour
     {
         float isClick = inputValue.Get<float>();
 
-        if (!isReload)
+        // 줌하고 있는 중에는 재장전 불가능
+        if (!isReload && !isZoom)
         {
             isReload = true;
             Reload();
