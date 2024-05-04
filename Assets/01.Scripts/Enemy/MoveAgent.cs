@@ -1,6 +1,6 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Text.RegularExpressions;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -11,6 +11,7 @@ public class MoveAgent : MonoBehaviour
 
     //다음 순찰 지점의 배열의 Index
     public int nextIdx = 0;
+    public int endIdx = 0; // 마지막지점 찍은 횟수
 
     private NavMeshAgent agent;
     private Transform enemyTr;
@@ -61,7 +62,7 @@ public class MoveAgent : MonoBehaviour
     }
 
     void Start()
-    {
+    {      
         enemyTr = GetComponent<Transform>();
         agent  = GetComponent<NavMeshAgent>();
         agent.autoBraking = false;
@@ -73,8 +74,10 @@ public class MoveAgent : MonoBehaviour
         if(group!=null)
         {
             group.GetComponentsInChildren<Transform>(wayPoints);
-            wayPoints.RemoveAt(0);  
             // 첫번째 요소엔 부모의 transform이 들어가기 때문 -> waypointgroup의 transform이 들어감, point들만 남게 
+            wayPoints.RemoveAt(0);  
+            
+            nextIdx = Random.Range(0, wayPoints.Count);
         }
         MoveWayPoint();
     }
@@ -84,9 +87,12 @@ public class MoveAgent : MonoBehaviour
         //최단 거리 경로 계산이 끝나지 않았으면 다음을 수행하지 않음
         if (agent.isPathStale) return;
 
-        //다음 목적지를 wayPoints 배열에서 추출한 위치로 다음 목적지를 지정
-        agent.destination = wayPoints[nextIdx].position;
-        agent.isStopped = false;
+        if (nextIdx < wayPoints.Count)
+        {
+            //다음 목적지를 wayPoints 배열에서 추출한 위치로 다음 목적지를 지정
+            agent.destination = wayPoints[nextIdx].position;
+            agent.isStopped = false;
+        }
     }
 
     public void Stop()
@@ -117,8 +123,18 @@ public class MoveAgent : MonoBehaviour
         if (agent.velocity.sqrMagnitude >= 0.2f * 0.2f
             && agent.remainingDistance <= 0.5f)
         {
-            // 다음 목적지 배열 첨자를 계산 
-            nextIdx = ++nextIdx % wayPoints.Count;
+
+            #region 순차적으로 이동 
+            //if (nextIdx == wayPoints.Count) endIdx++;
+            //if (nextIdx == 0) endIdx++;
+            //// 다음 목적지 배열 첨자를 계산 
+            //if(endIdx !=0 && endIdx %2 !=0 && nextIdx < wayPoints.Count) 
+            //    nextIdx = ++nextIdx;
+            //else if (endIdx != 0 && endIdx % 2 == 0 && nextIdx <= wayPoints.Count)
+            //    nextIdx = --nextIdx;
+            #endregion
+            nextIdx = Random.Range(0,wayPoints.Count);
+
             // 다음 목적지로 이동 명령 수행
             MoveWayPoint();
         }
