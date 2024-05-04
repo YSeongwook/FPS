@@ -1688,7 +1688,6 @@ GameObject:
   - component: {fileID: 78424902944802395}
   - component: {fileID: 199830239201405493}
   - component: {fileID: -5312620051928942769}
-  - component: {fileID: 8670523507413691091}
   m_Layer: 0
   m_Name: GameRoom_Player _Test
   m_TagString: Player
@@ -2022,24 +2021,6 @@ MonoBehaviour:
   serverOnly: 0
   visibility: 0
   hasSpawned: 0
---- !u!114 &8670523507413691091
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6943557613477250877}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 473d6424186cfb14889355718d19c5ed, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  syncDirection: 0
-  syncMode: 0
-  syncInterval: 0
-  showRoomGUI: 1
-  readyToBegin: 0
-  index: 0
 --- !u!1 &6943566782115108303
 GameObject:
   m_ObjectHideFlags: 0

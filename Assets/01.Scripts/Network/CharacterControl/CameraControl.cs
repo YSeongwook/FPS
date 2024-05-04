@@ -36,16 +36,16 @@ public class CameraControl : NetworkBehaviour
     {
         animator = GetComponent<Animator>();
 
-        if (isLocalPlayer)
-        {
-            //Camera cam = Camera.main;
-            //Debug.Log($"cam : {cam == null}");
-            //cam.transform.SetParent(transform);
-            //cam.transform.localPosition = Vector3.zero;
-            //cam.orthographicSize = 2.5f;
-            //tpsVCam
-            fpsVCam.Priority = 20;
-        }
+        //if (isLocalPlayer)
+        //{
+        //    //Camera cam = Camera.main;
+        //    //Debug.Log($"cam : {cam == null}");
+        //    //cam.transform.SetParent(transform);
+        //    //cam.transform.localPosition = Vector3.zero;
+        //    //cam.orthographicSize = 2.5f;
+        //    //tpsVCam
+        //    fpsVCam.Priority = 20;
+        //}
 
         //Cursor.visible = false;
 
