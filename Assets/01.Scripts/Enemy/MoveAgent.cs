@@ -80,6 +80,7 @@ public class MoveAgent : MonoBehaviour
 
             nextIdx = Random.Range(0, wayPoints.Count);
         }
+
         MoveWayPoint();
     }
 
@@ -96,17 +97,8 @@ public class MoveAgent : MonoBehaviour
         }
     }
 
-    public void Stop()
-    {
-        agent.isStopped = true;
-        agent.velocity = Vector3.zero;
-        _patrolling = false;
-    }
-
-    // Update is called once per frame
     void Update()
     {
-
         if (agent.isStopped == false)
         {
             //NavMeshAgent가 가야할 방향 벡터를 쿼터니언 타입의 각도로 변환
@@ -116,15 +108,12 @@ public class MoveAgent : MonoBehaviour
 
         }
 
-
         if (!_patrolling) return;
 
         // NavMeshAgent가 이동하고 있고 목적지에 도착했는지 여부 계산 
-        //velocity를 이용해서 현재속도를 받아오고, 목적지에 가까워 졌다고 판단되면 다음 목적지의 인덱스를 참조 -> 다음 목적지로 이동
-        if (agent.velocity.sqrMagnitude >= 0.2f * 0.2f
-            && agent.remainingDistance <= 0.5f)
+        // velocity를 이용해서 현재속도를 받아오고, 목적지에 가까워 졌다고 판단되면 다음 목적지의 인덱스를 참조 -> 다음 목적지로 이동
+        if (agent.velocity.sqrMagnitude >= 0.2f * 0.2f && agent.remainingDistance <= 0.5f)
         {
-
             #region 순차적으로 이동 
             //if (nextIdx == wayPoints.Count) endIdx++;
             //if (nextIdx == 0) endIdx++;
@@ -139,5 +128,12 @@ public class MoveAgent : MonoBehaviour
             // 다음 목적지로 이동 명령 수행
             MoveWayPoint();
         }
+    }
+
+    public void Stop()
+    {
+        agent.isStopped = true;
+        agent.velocity = Vector3.zero;
+        _patrolling = false;
     }
 }

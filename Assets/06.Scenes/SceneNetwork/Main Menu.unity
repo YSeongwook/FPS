@@ -3661,7 +3661,7 @@ MonoBehaviour:
   timeInterpolationGui: 0
   showRoomGUI: 1
   minPlayers: 1
-  roomPlayerPrefab: {fileID: 2493814361529588479}
+  roomPlayerPrefab: {fileID: 0}
   RoomScene: Assets/06.Scenes/SceneNetwork/Game Room.unity
   GameplayScene: Assets/06.Scenes/SceneNetwork/Game_Clone.unity
   _allPlayersReady: 0
