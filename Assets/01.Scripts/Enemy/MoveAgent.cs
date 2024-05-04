@@ -1,15 +1,13 @@
-using System.Collections;
 using System.Collections.Generic;
-using System.Text.RegularExpressions;
 using UnityEngine;
 using UnityEngine.AI;
 
 public class MoveAgent : MonoBehaviour
 {
-    //순찰 지점들을 저장하기 위한 List 타입 변수
+    // 순찰 지점들을 저장하기 위한 List 타입 변수
     public List<Transform> wayPoints;
 
-    //다음 순찰 지점의 배열의 Index
+    // 다음 순찰 지점의 배열의 Index
     public int nextIdx = 0;
     public int endIdx = 0; // 마지막지점 찍은 횟수
 
@@ -23,8 +21,10 @@ public class MoveAgent : MonoBehaviour
     private bool _patrolling;
 
     public bool patrolling
-    { get { return _patrolling; }
-        set {
+    {
+        get { return _patrolling; }
+        set
+        {
             _patrolling = value;
             if (_patrolling)
             {
@@ -40,7 +40,8 @@ public class MoveAgent : MonoBehaviour
     public Vector3 traceTarget
     {
         get { return _traceTarget; }
-        set {
+        set
+        {
             _traceTarget = value;
             agent.speed = traceSpeed;
             damping = 7.0f;
@@ -51,7 +52,7 @@ public class MoveAgent : MonoBehaviour
     public float speed
     {
         get { return agent.velocity.magnitude; }
-    } 
+    }
 
     void TraceTarget(Vector3 pos)
     {
@@ -62,21 +63,21 @@ public class MoveAgent : MonoBehaviour
     }
 
     void Start()
-    {      
+    {
         enemyTr = GetComponent<Transform>();
-        agent  = GetComponent<NavMeshAgent>();
+        agent = GetComponent<NavMeshAgent>();
         agent.autoBraking = false;
-        agent.updateRotation= false;
+        agent.updateRotation = false;
         agent.speed = patrollSpeed;
 
         var group = GameObject.Find("WayPointGroup");
-        
-        if(group!=null)
+
+        if (group != null)
         {
             group.GetComponentsInChildren<Transform>(wayPoints);
             // 첫번째 요소엔 부모의 transform이 들어가기 때문 -> waypointgroup의 transform이 들어감, point들만 남게 
-            wayPoints.RemoveAt(0);  
-            
+            wayPoints.RemoveAt(0);
+
             nextIdx = Random.Range(0, wayPoints.Count);
         }
         MoveWayPoint();
@@ -97,7 +98,7 @@ public class MoveAgent : MonoBehaviour
 
     public void Stop()
     {
-        agent.isStopped=true;
+        agent.isStopped = true;
         agent.velocity = Vector3.zero;
         _patrolling = false;
     }
@@ -106,7 +107,7 @@ public class MoveAgent : MonoBehaviour
     void Update()
     {
 
-        if(agent.isStopped == false)
+        if (agent.isStopped == false)
         {
             //NavMeshAgent가 가야할 방향 벡터를 쿼터니언 타입의 각도로 변환
             Quaternion rot = Quaternion.LookRotation(agent.desiredVelocity);
@@ -133,7 +134,7 @@ public class MoveAgent : MonoBehaviour
             //else if (endIdx != 0 && endIdx % 2 == 0 && nextIdx <= wayPoints.Count)
             //    nextIdx = --nextIdx;
             #endregion
-            nextIdx = Random.Range(0,wayPoints.Count);
+            nextIdx = Random.Range(0, wayPoints.Count);
 
             // 다음 목적지로 이동 명령 수행
             MoveWayPoint();

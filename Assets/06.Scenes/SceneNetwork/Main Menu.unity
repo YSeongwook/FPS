@@ -5023,6 +5023,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: RoomPlayer
       objectReference: {fileID: 0}
+    - target: {fileID: 5686217313756588469, guid: b69d01e608f73284fac74afdbf5c4e01, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5686217313756588470, guid: b69d01e608f73284fac74afdbf5c4e01, type: 3}
       propertyPath: sceneId
       value: 349586602
