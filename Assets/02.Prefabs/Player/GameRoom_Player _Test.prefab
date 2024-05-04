@@ -1683,11 +1683,12 @@ GameObject:
   - component: {fileID: 6942625543743639391}
   - component: {fileID: 6942625543584569276}
   - component: {fileID: 7668228374659861463}
-  - component: {fileID: 4463824208339075030}
   - component: {fileID: 382493369536510357}
   - component: {fileID: 4367033361801685117}
   - component: {fileID: 78424902944802395}
   - component: {fileID: 199830239201405493}
+  - component: {fileID: -5312620051928942769}
+  - component: {fileID: 8670523507413691091}
   m_Layer: 0
   m_Name: GameRoom_Player _Test
   m_TagString: Player
@@ -1913,23 +1914,6 @@ MonoBehaviour:
     m_DissipationDistance: 100
     m_PropagationSpeed: 343
   m_DefaultVelocity: {x: 0, y: -1, z: 0}
---- !u!114 &4463824208339075030
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6943557613477250877}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9b91ecbcc199f4492b9a91e820070131, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sceneId: 0
-  _assetId: 2654731951
-  serverOnly: 0
-  visibility: 0
-  hasSpawned: 0
 --- !u!114 &382493369536510357
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2021,6 +2005,41 @@ MonoBehaviour:
   bullet_Shell: {fileID: 131604, guid: 8698f59a8ea9a0c449a001968fa1db7f, type: 3}
   shell: 30
   crossHair: {fileID: 6943869358048463526}
+--- !u!114 &-5312620051928942769
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6943557613477250877}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b91ecbcc199f4492b9a91e820070131, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneId: 0
+  _assetId: 2654731951
+  serverOnly: 0
+  visibility: 0
+  hasSpawned: 0
+--- !u!114 &8670523507413691091
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6943557613477250877}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 473d6424186cfb14889355718d19c5ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  syncDirection: 0
+  syncMode: 0
+  syncInterval: 0
+  showRoomGUI: 1
+  readyToBegin: 0
+  index: 0
 --- !u!1 &6943566782115108303
 GameObject:
   m_ObjectHideFlags: 0

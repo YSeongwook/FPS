@@ -36,10 +36,10 @@ public class CameraControl : NetworkBehaviour
     {
         animator = GetComponent<Animator>();
 
-        if (isOwned)
+        if (isLocalPlayer)
         {
             Camera cam = Camera.main;
-            Debug.Log($"cam : {cam == null}");
+            //Debug.Log($"cam : {cam == null}");
             cam.transform.SetParent(transform);
             cam.transform.localPosition = Vector3.zero;
             cam.orthographicSize = 2.5f;
@@ -53,19 +53,19 @@ public class CameraControl : NetworkBehaviour
     private void Update()
     {
         // Object가 Client 소유인지 여부 확인
-        if (isOwned)
+        if (isLocalPlayer)
             RotateOrder();  // 캐릭터 및 총기 회전
 
         fireDelay += Time.deltaTime;
 
         // Object가 Client 소유인지 여부 확인
-        if (isOwned)
+        if (isLocalPlayer)
             GunFire();      // 발사
     }
     private void LateUpdate()
     {
         // Object가 Client 소유인지 여부 확인
-        //if(isOwned)
+        //if(isLocalPlayer)
         //CamRotate();    // 카메라 회전
     }
 

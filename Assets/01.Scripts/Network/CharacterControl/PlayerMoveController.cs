@@ -52,15 +52,16 @@ public class PlayerMoveController : NetworkBehaviour
 
     void OnMove(InputValue inputValue) // 이동(WASD)
     {
+        Debug.Log($"isLocalPlayer : {isLocalPlayer}");
         // Object가 Client 소유인지 여부 확인
-        if (isOwned)
+        if (isLocalPlayer)
             moveVectorTarget = inputValue.Get<Vector2>();//인풋 벡터 받아옴
     }
 
     void OnSprint(InputValue inputValue)
     {
         // Object가 Client 소유인지 여부 확인
-        if (isOwned)
+        if (isLocalPlayer)
         {
             float value = inputValue.Get<float>();
             moveSpeed = (value * 4f) + 1f;
