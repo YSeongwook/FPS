@@ -3643,7 +3643,7 @@ MonoBehaviour:
   autoCreatePlayer: 1
   playerSpawnMethod: 0
   spawnPrefabs:
-  - {fileID: 1580760483366548956, guid: 2b75c30c49731904ca926932b72226fb, type: 3}
+  - {fileID: 8321035103279475244, guid: 7f7354afc8567d542b2592567d478eca, type: 3}
   exceptionsDisconnect: 1
   snapshotSettings:
     bufferTimeMultiplier: 2
