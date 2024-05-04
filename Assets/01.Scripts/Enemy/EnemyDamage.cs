@@ -24,7 +24,6 @@ public class EnemyDamage : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        Debug.Log("!");
         if(collision.collider.tag == bulletTag)
         {
             ShowBloodEffect(collision);
@@ -46,7 +45,12 @@ public class EnemyDamage : MonoBehaviour
         Quaternion rot = Quaternion.FromToRotation(-Vector3.forward, _normal); // 회전값 계산
         // -Vector3.forward를 충돌점의 법선벡터가 바라보는 방향과 일치 시키기
 
-        GameObject blood = Instantiate<GameObject>(bloodEffect, pos, rot);
+        GameObject blood = ObjectPool.Instance.DequeueObject(bloodEffect);
+        
+        blood.transform.position = pos;
+        blood.transform.rotation = rot;
+
+        //GameObject blood = Instantiate<GameObject>(bloodEffect, pos, rot);
         //Destroy(blood, 1.0f);
     }
 }

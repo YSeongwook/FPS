@@ -4063,9 +4063,10 @@ GameObject:
   - component: {fileID: 396165883}
   - component: {fileID: 396165884}
   - component: {fileID: 9208606351527206517}
+  - component: {fileID: 239829575}
   m_Layer: 0
   m_Name: EnemyAI
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4190,6 +4191,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   wayPoints: []
   nextIdx: 0
+  endIdx: 0
 --- !u!114 &396165883
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4203,9 +4205,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   state: 0
-  attackDist: 5
-  traceDis: 10
+  attackDist: 8
+  traceDis: 15
   isDie: 0
+  changeMaterial: {fileID: 2100000, guid: 47be28ae53899c440a4bdc7de32df96c, type: 2}
+  changeMaterialTime: 2
 --- !u!114 &396165884
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4218,6 +4222,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b0e21cc561b2bd4b80ebb226d49370c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  randomFireTime: 1
   isFire: 0
   fireSfx: {fileID: 0}
   reloadSfx: {fileID: 0}
@@ -4237,6 +4242,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a6d167c50bc3454ea372d3d89dc6590, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bloodEffect: {fileID: 166404, guid: 78e1c8c5b281b8b439229473779ac9aa, type: 3}
+--- !u!136 &239829575
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1398631465708411325}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.3
+  m_Height: 1.8155773
+  m_Direction: 1
+  m_Center: {x: 0, y: 0.88698876, z: 0}
 --- !u!1 &1398631465740979007
 GameObject:
   m_ObjectHideFlags: 0

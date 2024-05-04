@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18279709, g: 0.22850122, b: 0.3070176, a: 1}
+  m_IndirectSpecularColor: {r: 0.1827969, g: 0.22850077, b: 0.30701667, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -9382,21 +9382,13 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1398631465708411312, guid: 62a532e13c42c3f4cb2e8d734792fbf6, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1398631465708411315, guid: 62a532e13c42c3f4cb2e8d734792fbf6, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 1398631465708411318, guid: 62a532e13c42c3f4cb2e8d734792fbf6, type: 3}
       propertyPath: m_RootOrder
       value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 1398631465708411318, guid: 62a532e13c42c3f4cb2e8d734792fbf6, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.76
+      value: 13.79
       objectReference: {fileID: 0}
     - target: {fileID: 1398631465708411318, guid: 62a532e13c42c3f4cb2e8d734792fbf6, type: 3}
       propertyPath: m_LocalPosition.y
@@ -9438,31 +9430,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: EnemyAI
       objectReference: {fileID: 0}
-    - target: {fileID: 9208606351527206517, guid: 62a532e13c42c3f4cb2e8d734792fbf6, type: 3}
-      propertyPath: bloodEffect
-      value: 
-      objectReference: {fileID: 166404, guid: 78e1c8c5b281b8b439229473779ac9aa, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 62a532e13c42c3f4cb2e8d734792fbf6, type: 3}
---- !u!1 &239829574 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1398631465708411325, guid: 62a532e13c42c3f4cb2e8d734792fbf6, type: 3}
-  m_PrefabInstance: {fileID: 239829573}
-  m_PrefabAsset: {fileID: 0}
---- !u!136 &239829575
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 239829574}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.3
-  m_Height: 1.8155773
-  m_Direction: 1
-  m_Center: {x: 0, y: 0.88698876, z: 0}
 --- !u!1001 &240716575
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -26883,6 +26852,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4133371030868832487, guid: 7ea37eb0d1762974ca28d2c84ff82827, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4133371031468771402, guid: 7ea37eb0d1762974ca28d2c84ff82827, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4133371031543632370, guid: 7ea37eb0d1762974ca28d2c84ff82827, type: 3}
       propertyPath: m_RootOrder
       value: 9
@@ -26930,6 +26907,22 @@ PrefabInstance:
     - target: {fileID: 4133371031543632371, guid: 7ea37eb0d1762974ca28d2c84ff82827, type: 3}
       propertyPath: m_Name
       value: WayPointGroup
+      objectReference: {fileID: 0}
+    - target: {fileID: 4133371031942972525, guid: 7ea37eb0d1762974ca28d2c84ff82827, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4133371032308447262, guid: 7ea37eb0d1762974ca28d2c84ff82827, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4133371032526682296, guid: 7ea37eb0d1762974ca28d2c84ff82827, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4133371032624298866, guid: 7ea37eb0d1762974ca28d2c84ff82827, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7ea37eb0d1762974ca28d2c84ff82827, type: 3}
