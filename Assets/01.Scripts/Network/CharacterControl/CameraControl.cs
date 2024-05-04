@@ -38,11 +38,13 @@ public class CameraControl : NetworkBehaviour
 
         if (isLocalPlayer)
         {
-            Camera cam = Camera.main;
+            //Camera cam = Camera.main;
             //Debug.Log($"cam : {cam == null}");
-            cam.transform.SetParent(transform);
-            cam.transform.localPosition = Vector3.zero;
-            cam.orthographicSize = 2.5f;
+            //cam.transform.SetParent(transform);
+            //cam.transform.localPosition = Vector3.zero;
+            //cam.orthographicSize = 2.5f;
+            //tpsVCam
+            fpsVCam.Priority = 20;
         }
 
         //Cursor.visible = false;
@@ -61,12 +63,17 @@ public class CameraControl : NetworkBehaviour
         // Object가 Client 소유인지 여부 확인
         if (isLocalPlayer)
             GunFire();      // 발사
+
+        if (isLocalPlayer)
+        {
+            fpsVCam.Priority = 20;
+        }
     }
     private void LateUpdate()
     {
         // Object가 Client 소유인지 여부 확인
-        //if(isLocalPlayer)
-        //CamRotate();    // 카메라 회전
+        if(isLocalPlayer)
+            CamRotate();    // 카메라 회전
     }
 
     void CamRotate()
