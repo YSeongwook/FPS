@@ -1,3 +1,4 @@
+using Org.BouncyCastle.Asn1.Crmf;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditor.Experimental;
@@ -19,6 +20,7 @@ public class EnemyFire : MonoBehaviour
 
     [SerializeField]private readonly float realoadTime = 2.0f;
     [SerializeField]private readonly int maxBullet = 10;
+    [SerializeField] private float randomFireTime = 1f;
     private int currBullet = 10;
     private bool isReload = false;
 
@@ -34,6 +36,10 @@ public class EnemyFire : MonoBehaviour
 
     [SerializeField] private Transform firePos;
     [SerializeField] private Transform shellPos;
+
+    private Vector3 randomFirePos;
+    private float randomX;
+    private float randomY;
 
     // Start is called before the first frame update
     void Start()
@@ -54,7 +60,7 @@ public class EnemyFire : MonoBehaviour
             if(Time.time >= nextFire)
             {
                 Fire();
-                nextFire = Time.time + fireRate + Random.Range(0.0f, 3f);
+                nextFire = Time.time + fireRate + Random.Range(0.0f, randomFireTime);
             }
             // 플레이어 바라보게 
             Quaternion rot = Quaternion.LookRotation(playerTr.position - enemyTr.position);
@@ -64,11 +70,14 @@ public class EnemyFire : MonoBehaviour
 
     private void Fire()
     {
+        randomX = (Random.Range(0, 0.3f));
+        randomY = (Random.Range(0, 0.3f));
+        randomFirePos = new Vector3(randomX, 0f, randomY);
         animator.SetTrigger(hashFire);
         //audio.PlayOneShot(fireSfx, 1.0f);
 
         GameObject bulletIst = ObjectPool.Instance.DequeueObject(bullet);
-        bulletIst.transform.position = firePos.position;
+        bulletIst.transform.position = firePos.position + randomFirePos;
         bulletIst.transform.rotation = firePos.rotation;
 
         bulletIst.GetComponent<Rigidbody>().velocity = bulletIst.transform.forward * 500;
@@ -81,9 +90,6 @@ public class EnemyFire : MonoBehaviour
         {
             StartCoroutine(Reloading());
         }
-
-        
-
     }
 
     IEnumerator Reloading()
