@@ -44,7 +44,7 @@ public class EnemyManager : MonoBehaviour
         // 첫번째 요소엔 부모의 transform이 들어가기 때문 -> waypointgroup의 transform이 들어감, point들만 남게 
         wayPoints.RemoveAt(0);
         spawnIdx = Random.Range(0, wayPoints.Count);
-        Debug.Log(wayPoints[spawnIdx]);
+        //Debug.Log(wayPoints[spawnIdx]);
         enemyposition = wayPoints[spawnIdx].position;
         enemyrotation = Quaternion.identity;
         GameObject enemy = Instantiate(EnemyPrfab, enemyposition, enemyrotation);

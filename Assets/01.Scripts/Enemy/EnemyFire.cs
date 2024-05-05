@@ -39,8 +39,7 @@ public class EnemyFire : MonoBehaviour
     private float randomY;
 
     void Start()
-    {
-        playerTr = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
+    {      
         enemyTr = GetComponent<Transform>();
         animator = GetComponent<Animator>();
         audio = GetComponent<AudioSource>();
@@ -52,7 +51,10 @@ public class EnemyFire : MonoBehaviour
 
     void Update()
     {
-        if(!isReload && isFire)
+        var player = FindObjectOfType<PlayerController>();
+        playerTr = player.GetComponent<Transform>();
+        Debug.Log(playerTr.position);
+        if (!isReload && isFire)
         {
             if(Time.time >= nextFire)
             {

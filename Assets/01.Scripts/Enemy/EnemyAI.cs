@@ -32,6 +32,7 @@ public class EnemyAI : MonoBehaviour
     public Material changeMaterial;
     public float changeMaterialTime = 1f;
 
+
     // 애니메이터 컨트롤러에 정의한 파라미터의 해시 값을 미리 추출
     private readonly int hashMove = Animator.StringToHash("IsMove");
     private readonly int hashSpeed = Animator.StringToHash("Speed");
@@ -41,8 +42,8 @@ public class EnemyAI : MonoBehaviour
 
     private void Awake()
     {
-        var player = GameObject.FindGameObjectWithTag("Player");
-        if (player != null) playerTr = player.GetComponent<Transform>();
+        //player = GameObject.FindGameObjectWithTag("Player");
+        //if (player != null) playerTr = player.GetComponent<Transform>();
 
         enemyTr = GetComponent<Transform>();
         animator = GetComponent<Animator>();
@@ -67,6 +68,10 @@ public class EnemyAI : MonoBehaviour
     {
         while (!isDie)
         {
+            var player = FindObjectOfType<PlayerController>();
+            //Debug.Log(player);
+            if (player != null) playerTr = player.GetComponent<Transform>();
+            //Debug.Log(playerTr.position);
             if (state == State.DIE) yield break;
 
             float dist = Vector3.Distance(playerTr.position, enemyTr.position);
@@ -117,6 +122,7 @@ public class EnemyAI : MonoBehaviour
             }
         }
     }
+
 
     void Update()
     {

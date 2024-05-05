@@ -47,6 +47,7 @@ public class PlayerController : NetworkBehaviour
 
     void Update()
     {
+
         if (isLocalPlayer)
         {
             MoveOrder();    // 이동  

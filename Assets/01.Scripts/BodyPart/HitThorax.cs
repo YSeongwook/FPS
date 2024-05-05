@@ -15,7 +15,6 @@ public class HitThorax : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        Debug.Log(collision.collider.tag);
         if (collision.collider.tag == bulletTag)
         {
             ShowBloodEffect(collision);
