@@ -151,8 +151,11 @@ public class CameraControl : NetworkBehaviour
 
     void Reload()
     {
-        animator.SetTrigger("Reload");
-        StartCoroutine(ReloadEnd());
+        if (isLocalPlayer)
+        {
+            animator.SetTrigger("Reload");
+            StartCoroutine(ReloadEnd());
+        }
     }
 
     IEnumerator ReloadEnd()
