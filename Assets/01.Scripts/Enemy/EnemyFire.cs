@@ -1,7 +1,4 @@
-using Org.BouncyCastle.Asn1.Crmf;
 using System.Collections;
-using System.Collections.Generic;
-using UnityEditor.Experimental;
 using UnityEngine;
 
 public class EnemyFire : MonoBehaviour
@@ -41,7 +38,6 @@ public class EnemyFire : MonoBehaviour
     private float randomX;
     private float randomY;
 
-    // Start is called before the first frame update
     void Start()
     {
         playerTr = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
@@ -52,7 +48,6 @@ public class EnemyFire : MonoBehaviour
         wsReload = new WaitForSeconds(realoadTime);
     }
 
-    // Update is called once per frame
     void Update()
     {
         if(!isReload && isFire)
@@ -62,6 +57,7 @@ public class EnemyFire : MonoBehaviour
                 Fire();
                 nextFire = Time.time + fireRate + Random.Range(0.0f, randomFireTime);
             }
+
             // 플레이어 바라보게 
             Quaternion rot = Quaternion.LookRotation(playerTr.position - enemyTr.position);
             enemyTr.rotation = Quaternion.Slerp(enemyTr.rotation, rot, Time.deltaTime * damping);

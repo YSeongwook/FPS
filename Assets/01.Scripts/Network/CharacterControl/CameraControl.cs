@@ -1,14 +1,17 @@
 using UnityEngine;
 using Mirror;
 using Cinemachine;
-using UnityEditor;
 using UnityEngine.InputSystem;
 using System.Collections;
 
 public class CameraControl : NetworkBehaviour
 {
-    [SerializeField] private GameObject tpsVCam;
+    [Header("Cinemachine")]
+    [SerializeField] private GameObject tpsPos;
+    [SerializeField] private CinemachineVirtualCamera tpsVCam;
     [SerializeField] private CinemachineVirtualCamera fpsVCam;
+
+    [Header("Weapon Position")]
     [SerializeField] private Transform weaponPos;
     [SerializeField] private Transform firePos;
     [SerializeField] private Transform shellPos;
@@ -29,8 +32,8 @@ public class CameraControl : NetworkBehaviour
     private float delayCount = 0.1f;
     private bool isReload = false;
 
-    [Header("Zoom")]
-    public GameObject crossHair;
+    [Header("crosshair")]
+    public GameObject crosshair;
 
     private void Start()
     {
@@ -47,7 +50,9 @@ public class CameraControl : NetworkBehaviour
         //    fpsVCam.Priority = 20;
         //}
 
-        //Cursor.visible = false;
+        tpsVCam = tpsPos.GetComponent<CinemachineVirtualCamera>();
+
+        // Cursor.visible = false;
 
         SetCamType(false);
     }
@@ -56,24 +61,19 @@ public class CameraControl : NetworkBehaviour
     {
         // Object가 Client 소유인지 여부 확인
         if (isLocalPlayer)
-            RotateOrder();  // 캐릭터 및 총기 회전
-
-        fireDelay += Time.deltaTime;
-
-        // Object가 Client 소유인지 여부 확인
-        if (isLocalPlayer)
-            GunFire();      // 발사
-
-        if (isLocalPlayer)
         {
-            fpsVCam.Priority = 20;
+            RotateOrder();              // 캐릭터 및 총기 회전
+            fireDelay += Time.deltaTime;
+            GunFire();                  // 발사
+
+            SetVCamPriority();
         }
     }
+
     private void LateUpdate()
     {
         // Object가 Client 소유인지 여부 확인
-        if(isLocalPlayer)
-            CamRotate();    // 카메라 회전
+        if(isLocalPlayer) CamRotate();    // 카메라 회전
     }
 
     void CamRotate()
@@ -113,11 +113,12 @@ public class CameraControl : NetworkBehaviour
         this.transform.rotation = Quaternion.Slerp(this.transform.rotation, rotationBody, Time.deltaTime * 8f);
     }
 
+    // 수정이 필요
     void SetCamType(bool isFps)
     {
         if (isFps)
         {
-            fpsVCam.Priority = 11;
+            fpsVCam.Priority = 15;
         }
         else
         {
@@ -184,13 +185,14 @@ public class CameraControl : NetworkBehaviour
         if (isClick == 1)
         {
             isZoom = true;
-            crossHair.SetActive(true);
+            crosshair.SetActive(true);
         }
         else
         {
             isZoom = false;
-            crossHair.SetActive(true);
+            crosshair.SetActive(true);
         }
+
         SetCamType(isZoom);
     }
 
@@ -209,5 +211,11 @@ public class CameraControl : NetworkBehaviour
             isReload = true;
             Reload();
         }
+    }
+
+    void SetVCamPriority()
+    {
+        // fpsVCam.Priority = 1;
+        tpsVCam.Priority = 20;
     }
 }

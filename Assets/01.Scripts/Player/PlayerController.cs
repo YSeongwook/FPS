@@ -164,7 +164,7 @@ public class PlayerController : MonoBehaviour
     void OnSprint(InputValue inputValue)
     {
         float value = inputValue.Get<float>();
-        moveSpeed = (value * 4f) + 1f;
+        moveSpeed = (value * 2f) + 2f;
     }
 
     void OnFire(InputValue inputValue)
