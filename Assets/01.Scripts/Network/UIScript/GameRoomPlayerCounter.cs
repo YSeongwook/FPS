@@ -20,6 +20,7 @@ public class GameRoomPlayerCounter : NetworkBehaviour
         bool isStartable = players.Length >= maxPlayer;
         playerCountText.color = isStartable ? Color.white : Color.red;
         playerCountText.text = string.Format("{0}/{1}", players.Length, maxPlayer);
+        LobbyUIManager.Instance.SetInteractableStartButton(isStartable);
     }
 
     private void Start()

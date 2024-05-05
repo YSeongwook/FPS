@@ -3659,7 +3659,7 @@ MonoBehaviour:
   evaluationMethod: 0
   evaluationInterval: 3
   timeInterpolationGui: 0
-  showRoomGUI: 1
+  showRoomGUI: 0
   minPlayers: 1
   roomPlayerPrefab: {fileID: 5686217313756588471, guid: b69d01e608f73284fac74afdbf5c4e01, type: 3}
   RoomScene: Assets/06.Scenes/SceneNetwork/Game Room.unity
@@ -3668,6 +3668,7 @@ MonoBehaviour:
   roomSlots: []
   clientIndex: 0
   maxPlayerCount: 0
+  minPlayerCount: 1
 --- !u!4 &1351439268
 Transform:
   m_ObjectHideFlags: 0

@@ -9,6 +9,13 @@ public class FPSRoomPlayer : NetworkRoomPlayer
     {
         base.Start();
         LobbyUIManager.Instance.GameRoomPlayerCounter.UpdatePlayerCount();
+
+        if(isServer)
+        {
+            LobbyUIManager.Instance.ActiveStartButton();
+        }
+
+
     }
 
     private void OnDestroy()
