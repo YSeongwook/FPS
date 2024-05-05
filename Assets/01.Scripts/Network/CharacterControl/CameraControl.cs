@@ -116,7 +116,7 @@ public class CameraControl : NetworkBehaviour
     // 수정이 필요
     void SetCamType(bool isFps)
     {
-        if (isFps)
+        if (isFps && isLocalPlayer)
         {
             fpsVCam.Priority = 21;
         }
