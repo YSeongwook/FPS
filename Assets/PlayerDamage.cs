@@ -48,7 +48,6 @@ public class PlayerDamage : MonoBehaviour
                 enemyAI.state = EnemyAI.State.PATROL;
             }
         }
-
     }
 
     private void ShowBloodEffect(Collision collision)
