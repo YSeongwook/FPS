@@ -5,6 +5,9 @@ using Mirror;
 
 public class FPSRoomManager : NetworkRoomManager
 {
+    //public int minPlayerCount;
+    public int maxPlayerCount;
+
     //public override void OnRoomServerConnect(NetworkConnectionToClient conn)
     //{
     //    base.OnRoomServerConnect(conn);
@@ -15,6 +18,7 @@ public class FPSRoomManager : NetworkRoomManager
     //    NetworkServer.AddPlayerForConnection(conn, player);
     //    //NetworkServer.Spawn(player, conn);
     //}
+
     public override void OnRoomServerConnect(NetworkConnectionToClient conn)
     {
         base.OnRoomServerConnect(conn);

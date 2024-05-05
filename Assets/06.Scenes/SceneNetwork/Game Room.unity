@@ -13595,7 +13595,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &336160688
 RectTransform:
   m_ObjectHideFlags: 0
@@ -13612,9 +13612,9 @@ RectTransform:
   m_Father: {fileID: 378091473}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0.5}
-  m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 60, y: 0}
+  m_AnchorMin: {x: 1, y: 0.5}
+  m_AnchorMax: {x: 1, y: 0.5}
+  m_AnchoredPosition: {x: -550, y: 0}
   m_SizeDelta: {x: 500, y: 1000}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!114 &336160689
@@ -51159,7 +51159,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1153206755
 RectTransform:
   m_ObjectHideFlags: 0
@@ -56161,7 +56161,37 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\uC124\uC815\n"
+  m_text: 'HOW TO PLAY
+
+
+
+
+    Left Click : Fire
+
+
+    Right Click : Zoom
+
+
+    KeyBoard
+    R key : Reload
+
+
+    Move : WASD
+
+
+
+    When you ard Ready,
+
+    Press Ready
+    Button
+
+    on the left side Panel.
+
+
+    The game will Begin,
+
+    When all
+    Players Press the ready Button.'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: a2a05039d549d1446b0537d737a814d6, type: 2}
   m_sharedMaterial: {fileID: 3406679341144783426, guid: a2a05039d549d1446b0537d737a814d6, type: 2}

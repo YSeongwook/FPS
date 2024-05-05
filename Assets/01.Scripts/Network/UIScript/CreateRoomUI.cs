@@ -51,9 +51,12 @@ public class CreateRoomUI : MonoBehaviour
 
     public void CreateRoom()
     {
-        var manager = FPSRoomManager.singleton;
+        var manager = NetworkManager.singleton as FPSRoomManager;
         // 방 설정 작업 처리
         // 
+        manager.maxPlayerCount = roomData.maxPlayerCount;
+        manager.maxConnections = roomData.maxPlayerCount;
+
         manager.StartHost();
     }
 }
