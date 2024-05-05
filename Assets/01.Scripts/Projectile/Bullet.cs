@@ -1,4 +1,3 @@
-
 using UnityEngine;
 
 public class Bullet : MonoBehaviour
@@ -11,33 +10,31 @@ public class Bullet : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        
+        EnemyDamage enemyDamage = collision.gameObject.transform.root.GetComponent<EnemyDamage>();
+
         if(collision.gameObject.CompareTag("Leg"))
         {
             Debug.Log("Leg");
-            collision.gameObject.transform.root.GetComponent<EnemyDamage>().TakeDamge(5, collision);
+            enemyDamage.TakeDamge(5, collision);
         }
         else if (collision.gameObject.CompareTag("Arm"))
         {
             Debug.Log("Arm");
-            collision.gameObject.transform.root.GetComponent<EnemyDamage>().TakeDamge(8, collision);
+            enemyDamage.TakeDamge(8, collision);
         }
         else if (collision.gameObject.CompareTag("Body"))
         {
             Debug.Log("Body");
-            collision.gameObject.transform.root.GetComponent<EnemyDamage>().TakeDamge(10, collision);
+            enemyDamage.TakeDamge(10, collision);
         }
         else if (collision.gameObject.CompareTag("Head"))
         {
             Debug.Log("Head");
-            collision.gameObject.transform.root.GetComponent<EnemyDamage>().TakeDamge(15, collision);
+            enemyDamage.TakeDamge(15, collision);
         }
-
 
         ProjectileDisable(collision.contacts[0].point);
     }
-
-
 
     void ProjectileDisable(Vector3 hitPosition)
     {

@@ -29,8 +29,6 @@ namespace EnumTypes
     public enum ThrowableType
     {
         Grenade,
-        BossBomb,
-        BossHeavyBomb,
         EnemyGrenade,
     };
 
@@ -50,14 +48,15 @@ namespace EnumTypes
         GunUsed,
         GrenadeUsed,
 
-        MissionStart,
-        MissionEnd,
-        MissionSuccess,
-
         GameOver,
         Restart,
         ItemPickedUp,
         Home,
+
+        HitHead,
+        HitThorax,
+        HitArm,
+        HitLeg,
 
         ShowRecordingUI
     }
