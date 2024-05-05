@@ -15,8 +15,8 @@ public class EnemyFire : MonoBehaviour
     private readonly float fireRate = 0.1f;
     private readonly float damping = 10.0f;
 
-    [SerializeField]private readonly float realoadTime = 2.0f;
-    [SerializeField]private readonly int maxBullet = 10;
+    [SerializeField] private readonly float realoadTime = 2.0f;
+    [SerializeField] private readonly int maxBullet = 10;
     [SerializeField] private float randomFireTime = 1f;
     private int currBullet = 10;
     private bool isReload = false;
