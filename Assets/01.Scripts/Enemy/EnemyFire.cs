@@ -48,6 +48,8 @@ public class EnemyFire : MonoBehaviour
         wsReload = new WaitForSeconds(realoadTime);
     }
 
+    
+
     void Update()
     {
         if(!isReload && isFire)

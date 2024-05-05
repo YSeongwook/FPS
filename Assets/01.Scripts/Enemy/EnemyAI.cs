@@ -42,7 +42,6 @@ public class EnemyAI : MonoBehaviour
     private void Awake()
     {
         var player = GameObject.FindGameObjectWithTag("Player");
-
         if (player != null) playerTr = player.GetComponent<Transform>();
 
         enemyTr = GetComponent<Transform>();

@@ -12,6 +12,6 @@ EditorBuildSettings:
     path: Assets/06.Scenes/SceneNetwork/Game Room.unity
     guid: dd4d298a340b89e42b06e95c048fa6ec
   - enabled: 1
-    path: Assets/06.Scenes/SceneNetwork/GamePlay_Test.unity
-    guid: 716818a1590769c45a6978a4c25e8869
+    path: Assets/06.Scenes/Eunjoo/Eunjoo.unity
+    guid: 24b126a8d5b856c49a2e460008e54067
   m_configObjects: {}
