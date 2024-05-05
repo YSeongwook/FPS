@@ -111,7 +111,7 @@ public class EnemyAI : MonoBehaviour
                     isDie = true;
                     enemyFire.isFire = false;
                     moveAgent.Stop();
-                    GetComponent<CapsuleCollider>().enabled = false;
+                    // GetComponent<CapsuleCollider>().enabled = false;
                     animator.SetTrigger(hashDie);
                     StartCoroutine("TransitionMaterialColor");
                     break;

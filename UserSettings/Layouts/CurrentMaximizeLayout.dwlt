@@ -26,7 +26,7 @@ MonoBehaviour:
   m_MinSize: {x: 400, y: 200}
   m_MaxSize: {x: 32384, y: 16192}
   vertical: 0
-  controlID: 16434
+  controlID: 60359
 --- !u!114 &2
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -144,7 +144,7 @@ MonoBehaviour:
   m_MinSize: {x: 100, y: 200}
   m_MaxSize: {x: 8096, y: 16192}
   vertical: 1
-  controlID: 16435
+  controlID: 60360
 --- !u!114 &4
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -442,9 +442,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 0.27923036, y: 1.1779915, z: -6.489754}
+    m_Target: {x: -40.252937, y: -70.95575, z: -1022.13513}
     speed: 2
-    m_Value: {x: 0.27923036, y: 1.1779915, z: -6.489754}
+    m_Value: {x: -40.252937, y: -70.95575, z: -1022.13513}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -491,13 +491,13 @@ MonoBehaviour:
     m_GridAxis: 1
     m_gridOpacity: 0.5
   m_Rotation:
-    m_Target: {x: 0.0040665604, y: 0.9944782, z: -0.09607506, w: 0.04209247}
+    m_Target: {x: -0.0051431176, y: 0.9947963, z: -0.06606164, w: -0.0774509}
     speed: 2
-    m_Value: {x: 0.004066549, y: 0.99447536, z: -0.09607478, w: 0.04209235}
+    m_Value: {x: -0.005143095, y: 0.99479187, z: -0.06606135, w: -0.07745056}
   m_Size:
-    m_Target: 0.99767905
+    m_Target: 10
     speed: 2
-    m_Value: 0.99767905
+    m_Value: 10
   m_Ortho:
     m_Target: 0
     speed: 2
@@ -554,7 +554,75 @@ MonoBehaviour:
   m_ViewTransforms:
     m_KeySerializationHelper:
     - {fileID: 8241282295151829407, guid: 5eb2b0952f459404cae3554726b2f958, type: 2}
+    - {fileID: 8241282295151829407, guid: 8ee4111d05561254ea58f4dea62698b5, type: 2}
+    - {fileID: -376485545717309008, guid: 5eb2b0952f459404cae3554726b2f958, type: 2}
+    - {fileID: 345135318631937165, guid: 5eb2b0952f459404cae3554726b2f958, type: 2}
+    - {fileID: 345135318631937165, guid: 8ee4111d05561254ea58f4dea62698b5, type: 2}
     m_ValueSerializationHelper:
+    - e00: 1
+      e01: 0
+      e02: 0
+      e03: 135
+      e10: 0
+      e11: 1
+      e12: 0
+      e13: 165.5
+      e20: 0
+      e21: 0
+      e22: 1
+      e23: 0
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+    - e00: 1
+      e01: 0
+      e02: 0
+      e03: 0
+      e10: 0
+      e11: 1
+      e12: 0
+      e13: 0
+      e20: 0
+      e21: 0
+      e22: 1
+      e23: 0
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+    - e00: 1
+      e01: 0
+      e02: 0
+      e03: 105
+      e10: 0
+      e11: 1
+      e12: 0
+      e13: 55.5
+      e20: 0
+      e21: 0
+      e22: 1
+      e23: 0
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+    - e00: 1.15
+      e01: 0
+      e02: 0
+      e03: -174.89996
+      e10: 0
+      e11: 1.15
+      e12: 0
+      e13: 167.92522
+      e20: 0
+      e21: 0
+      e22: 1
+      e23: 0
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
     - e00: 1
       e01: 0
       e02: 0
@@ -572,9 +640,9 @@ MonoBehaviour:
       e32: 0
       e33: 1
   m_PreviewAnimator: {fileID: 0}
-  m_AnimatorController: {fileID: 9100000, guid: 5eb2b0952f459404cae3554726b2f958, type: 2}
+  m_AnimatorController: {fileID: 9100000, guid: 8ee4111d05561254ea58f4dea62698b5, type: 2}
   m_BreadCrumbs:
-  - m_Target: {fileID: 8241282295151829407, guid: 5eb2b0952f459404cae3554726b2f958, type: 2}
+  - m_Target: {fileID: 345135318631937165, guid: 8ee4111d05561254ea58f4dea62698b5, type: 2}
     m_ScrollPosition: {x: 0, y: 0}
   stateMachineGraph: {fileID: 0}
   stateMachineGraphGUI: {fileID: 0}
@@ -586,7 +654,7 @@ MonoBehaviour:
     m_IsLocked: 0
   m_CurrentEditor: 0
   m_LayerEditor:
-    m_SelectedLayerIndex: 0
+    m_SelectedLayerIndex: 1
 --- !u!114 &7
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -701,23 +769,23 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 
+      m_SelectedIDs: 5c860000
       m_LastClickedID: 0
-      m_ExpandedIDs: 84a5faff8ea5faff98a5faff9ca5faffe8a5faffeca5fafff0a5fafff4a5fafff8a5faff66a6fafff6fcfaff665efbff96f1fbff1052fcff4ec0fcffcc09fdffb219fdff0084fdffcaecfdffd234fefff48ffefff402ffff9e4afffffaacffff14fbfffff4ffffff30990000183f0400383f04004e3f0400563f04006c3f04009a3f04009c3f0400bc3f0400be3f0400c03f040088d7060096650c0076690c00
+      m_ExpandedIDs: 4c27f7ff38d6f7ffe6e1f7ff5efdf7ffc680f8ffcc80f8ffdc80f8ffe080f8fffc80f8ff0281f8ff0a81f8ff1081f8ff3481f8ff3681f8ff3a81f8ff3282f8ff5a82f8ff5e82f8fff282f8ff4683f8ff4a83f8ff4e83f8ff5283f8ff5683f8ff3cdaf8fff621f9ff487cf9ff4a7cf9ff4c7cf9ff4e7cf9ff507cf9ff567cf9ff587cf9ff5a7cf9ff5c7cf9ff8a7cf9ff8c7cf9ffb67cf9ffbc7cf9ffbe7cf9ffc07cf9ffc87cf9ffbe94f9ffdca0f9ff02f9f9ff06f9f9ff36f9f9ff42f9f9ff4ef9f9ff52f9f9ffa2f9f9ffa6f9f9ffaaf9f9ffaef9f9ffb050faff84a5faff8ea5faff98a5faff9ca5faffe8a5faffeca5fafff0a5fafff4a5fafff8a5fafff6fcfaff665efbff96f1fbff1052fcff4ec0fcffcc09fdffb219fdff0084fdffcaecfdffd234fefff48ffefff402ffff9e4afffffaacffff14fbfffff4ffffff30990000183f0400383f04004e3f0400563f04006c3f04009a3f04009c3f0400bc3f0400be3f0400c03f040088d7060096650c0076690c0036431200e64a1200584b1200044c1200724d12001c4e1200284e1200104f1200a65012003e581200e0591200405c120038261b005a8a25006e8e2500ea902500bc9325007c95250096982500889c25009e9c25007c9d2500629e25006a9e2500709f25009e9f2500d69f2500
       m_RenameOverlay:
         m_UserAcceptedRename: 0
-        m_Name: EnemyAI Test
-        m_OriginalName: EnemyAI Test
+        m_Name: 
+        m_OriginalName: 
         m_EditFieldRect:
           serializedVersion: 2
           x: 0
           y: 0
           width: 0
           height: 0
-        m_UserData: -350618
+        m_UserData: 0
         m_IsWaitingForDelay: 0
         m_IsRenaming: 0
-        m_OriginalEventType: 0
+        m_OriginalEventType: 11
         m_IsRenamingFilename: 0
         m_ClientGUIView: {fileID: 9}
       m_SearchString: 
@@ -793,23 +861,23 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/01.Scripts/Enemy
+    - Assets/Imports/PolygonBattleRoyale/Prefabs/FX
     m_Globs: []
     m_OriginalText: 
     m_FilterByTypeIntersection: 0
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/01.Scripts/Enemy
+  - Assets/Imports/PolygonBattleRoyale/Prefabs/FX
   m_LastFoldersGridSize: -1
   m_LastProjectPath: D:\Git\FPS
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: ee940000
-    m_LastClickedID: 38126
-    m_ExpandedIDs: 000000006494000066940000689400006a9400006c9400006e9400007094000000ca9a3b
+    m_SelectedIDs: 0cfe0300
+    m_LastClickedID: 261644
+    m_ExpandedIDs: 000000006494000066940000689400006c9400006e94000070940000729400001a95000004fe030000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -837,7 +905,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 000000006494000066940000689400006c9400006e9400007094000000ca9a3b
+    m_ExpandedIDs: 0000000064940000689400006c9400006e940000709400007294000004fe030000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -862,10 +930,10 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
-    m_SelectedInstanceIDs: 
-    m_LastClickedInstanceID: 0
-    m_HadKeyboardFocusLastEvent: 0
-    m_ExpandedInstanceIDs: 
+    m_SelectedInstanceIDs: 5c860000
+    m_LastClickedInstanceID: 34396
+    m_HadKeyboardFocusLastEvent: 1
+    m_ExpandedInstanceIDs: 4c4d0800304d0800484d0800
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
