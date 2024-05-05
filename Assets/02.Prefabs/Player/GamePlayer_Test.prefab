@@ -1932,7 +1932,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5dfe093445c90f741a2344a452aaa259, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tpsVCam: {fileID: 5764996552880526037}
+  tpsPos: {fileID: 5764996552880526037}
+  tpsVCam: {fileID: 5764996554695294477}
   fpsVCam: {fileID: 5764996554406074275}
   weaponPos: {fileID: 5764996553190186355}
   firePos: {fileID: 5764996554285391229}

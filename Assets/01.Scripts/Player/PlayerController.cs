@@ -1,11 +1,13 @@
 using Cinemachine;
+using Mirror;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PlayerController : MonoBehaviour
+public class PlayerController : NetworkBehaviour
 {
-    [SerializeField] private GameObject tpsVCam;
+    [SerializeField] private GameObject tpsPos;
+    [SerializeField] private CinemachineVirtualCamera tpsVCam;
     [SerializeField] private CinemachineVirtualCamera fpsVCam;
     [SerializeField] private Transform weaponPos;
     [SerializeField] private Transform firePos;
@@ -14,7 +16,7 @@ public class PlayerController : MonoBehaviour
     private Animator animator;
     private CharacterController cc;
 
-    private Vector2 moveVector = Vector2.zero;
+    [SyncVar] private Vector2 moveVector = Vector2.zero;
     private Vector2 moveVectorTarget;
     private Vector2 mouseDeltaPos = Vector2.zero;
     private float moveSpeed = 2f;
@@ -45,35 +47,47 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        MoveOrder();    // 이동  
-        RotateOrder();  // 캐릭터 및 총기 회전
+        if (isLocalPlayer)
+        {
+            MoveOrder();    // 이동  
+            RotateOrder();  // 캐릭터 및 총기 회전
 
-        fireDelay += Time.deltaTime;
-        GunFire();      // 발사
+            fireDelay += Time.deltaTime;
+            GunFire();      // 발사
+
+            SetVCamPriority();
+        }
+    }
+
+    void SetVCamPriority()
+    {
+        // fpsVCam.Priority = 1;
+        tpsVCam.Priority = 20;
     }
 
     private void LateUpdate()
     {
-        CamRotate();    // 카메라 회전
+        if (isLocalPlayer) CamRotate();    // 카메라 회전
     }
 
     private void MoveOrder()
     {
+        animator.SetFloat("XSpeed", moveVector.x);
+        animator.SetFloat("ZSpeed", moveVector.y);
+
         moveVector = Vector2.Lerp(moveVector, moveVectorTarget * moveSpeed, Time.deltaTime * 5);
 
         Vector3 moveVector3 = new Vector3(moveVector.x * 0.5f, Physics.gravity.y, moveVector.y);
 
         cc.Move(this.transform.rotation * moveVector3 * Time.deltaTime);
 
-        animator.SetFloat("XSpeed", moveVector.x);
-        animator.SetFloat("ZSpeed", moveVector.y);
     }
 
     void CamRotate()
     {
-        tpsVCam.transform.position = this.transform.position + new Vector3(0, 1.5f, 0);
+        tpsPos.transform.position = this.transform.position + new Vector3(0, 1.5f, 0);
 
-        Vector3 camAngle = tpsVCam.transform.rotation.eulerAngles;
+        Vector3 camAngle = tpsPos.transform.rotation.eulerAngles;
 
         if (isZoom) mouseDeltaPos *= 0.1f;
         else mouseDeltaPos *= 0.2f;
@@ -84,17 +98,17 @@ public class PlayerController : MonoBehaviour
         else x = Mathf.Clamp(x, 345f, 361f);
 
         // 현재 회전 상태와 목표 회전 상태를 쿼터니언으로 변환합니다.
-        Quaternion currentRotation = tpsVCam.transform.rotation;
+        Quaternion currentRotation = tpsPos.transform.rotation;
         Quaternion targetRotation = Quaternion.Euler(x, camAngle.y + mouseDeltaPos.x, camAngle.z);
 
         // 현재 회전 상태에서 목표 회전 상태로 부드럽게 보간합니다.
-        tpsVCam.transform.rotation = Quaternion.Slerp(currentRotation, targetRotation, Time.deltaTime * 80);
+        tpsPos.transform.rotation = Quaternion.Slerp(currentRotation, targetRotation, Time.deltaTime * 80);
         mouseDeltaPos *= 0.3f;
     }
 
     void RotateOrder()
     {
-        Vector3 direction = (tpsVCam.transform.forward).normalized;
+        Vector3 direction = (tpsPos.transform.forward).normalized;
 
         Quaternion rotationWeapon = Quaternion.LookRotation(direction);
         rotationWeapon = Quaternion.Euler(rotationWeapon.eulerAngles.x - 10f, this.transform.rotation.eulerAngles.y, rotationWeapon.eulerAngles.z);
@@ -108,9 +122,9 @@ public class PlayerController : MonoBehaviour
 
     void SetCamType(bool isFps)
     {
-        if (isFps)
+        if (isFps && isLocalPlayer)
         {
-            fpsVCam.Priority = 11;
+            fpsVCam.Priority = 21;
         }
         else
         {
@@ -143,8 +157,11 @@ public class PlayerController : MonoBehaviour
 
     void Reload()
     {
-        animator.SetTrigger("Reload");
-        StartCoroutine(ReloadEnd());
+        if (isLocalPlayer)
+        { 
+            animator.SetTrigger("Reload");
+            StartCoroutine(ReloadEnd());
+        }
     }
 
     IEnumerator ReloadEnd()
@@ -158,13 +175,18 @@ public class PlayerController : MonoBehaviour
 
     void OnMove(InputValue inputValue) // 이동(WASD)
     {
-        moveVectorTarget = inputValue.Get<Vector2>();//인풋 벡터 받아옴
+        Debug.Log($"isLocalPlayer : {isLocalPlayer}");
+        if (isLocalPlayer)
+            moveVectorTarget = inputValue.Get<Vector2>();//인풋 벡터 받아옴
     }
 
     void OnSprint(InputValue inputValue)
     {
-        float value = inputValue.Get<float>();
-        moveSpeed = (value * 2f) + 2f;
+        if (isLocalPlayer)
+        {
+            float value = inputValue.Get<float>();
+            moveSpeed = (value * 2f) + 2f;
+        }
     }
 
     void OnFire(InputValue inputValue)
