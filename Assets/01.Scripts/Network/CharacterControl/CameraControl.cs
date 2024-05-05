@@ -87,14 +87,14 @@ public class CameraControl : NetworkBehaviour
 
         float x = camAngle.x - mouseDeltaPos.y;
 
-        if (x < 180f) x = Mathf.Clamp(x, -1f, 15f);
+        if (x < 180f) x = Mathf.Clamp(x, 0f, 15f);
         else x = Mathf.Clamp(x, 345f, 361f);
 
-        // 현재 회전 상태와 목표 회전 상태를 쿼터니언으로 변환합니다.
+        // 현재 회전 상태와 목표 회전 상태를 쿼터니언으로 변환
         Quaternion currentRotation = tpsPos.transform.rotation;
         Quaternion targetRotation = Quaternion.Euler(x, camAngle.y + mouseDeltaPos.x, camAngle.z);
 
-        // 현재 회전 상태에서 목표 회전 상태로 부드럽게 보간합니다.
+        // 현재 회전 상태에서 목표 회전 상태로 부드럽게 보간
         tpsPos.transform.rotation = Quaternion.Slerp(currentRotation, targetRotation, Time.deltaTime * 80);
         mouseDeltaPos *= 0.3f;
     }

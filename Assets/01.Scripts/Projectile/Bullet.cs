@@ -2,9 +2,9 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    private void OnCollisionEnter(Collision collision)
+    private void OnCollisionEnter(Collision col)
     {
-        ProjectileDisable(collision.contacts[0].point);
+        ProjectileDisable(col.contacts[0].point);
     }
 
     void ProjectileDisable(Vector3 hitPosition)
