@@ -5,19 +5,9 @@ using Mirror;
 
 public class FPSRoomManager : NetworkRoomManager
 {
-    //public int minPlayerCount;
     public int maxPlayerCount;
-
-    //public override void OnRoomServerConnect(NetworkConnectionToClient conn)
-    //{
-    //    base.OnRoomServerConnect(conn);
-    //
-    //    Vector3 spawnPos = FindObjectOfType<SpawnPositions>().GetSpawnPosition();
-    //
-    //    var player = Instantiate(spawnPrefabs[0], spawnPos, Quaternion.identity);
-    //    NetworkServer.AddPlayerForConnection(conn, player);
-    //    //NetworkServer.Spawn(player, conn);
-    //}
+    public int minPlayerCount = 1;
+    
 
     public override void OnRoomServerConnect(NetworkConnectionToClient conn)
     {
@@ -38,3 +28,15 @@ public class FPSRoomManager : NetworkRoomManager
     }
     
 }
+
+
+//public override void OnRoomServerConnect(NetworkConnectionToClient conn)
+//{
+//    base.OnRoomServerConnect(conn);
+//
+//    Vector3 spawnPos = FindObjectOfType<SpawnPositions>().GetSpawnPosition();
+//
+//    var player = Instantiate(spawnPrefabs[0], spawnPos, Quaternion.identity);
+//    NetworkServer.AddPlayerForConnection(conn, player);
+//    //NetworkServer.Spawn(player, conn);
+//}
