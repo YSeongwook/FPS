@@ -19,7 +19,9 @@ public class HitThorax : MonoBehaviour
         if (collision.collider.tag == bulletTag)
         {
             ShowBloodEffect(collision);
-            EventManager<HitBodyPart>.TriggerEvent(HitBodyPart.HitThorax);
+            // EventManager<HitBodyPart>.TriggerEvent(HitBodyPart.HitThorax);
+
+            CheckPlayerOrEnemy();
         }
     }
 
@@ -35,5 +37,19 @@ public class HitThorax : MonoBehaviour
 
         blood.transform.position = pos;
         blood.transform.rotation = rot;
+    }
+
+    void CheckPlayerOrEnemy()
+    {
+        if (gameObject.transform.root.CompareTag("Enemy"))
+        {
+            EnemyDamage enemyDamage = gameObject.transform.root.GetComponent<EnemyDamage>();
+            enemyDamage.DamagedThorax();
+        }
+        else
+        {
+            Status status = gameObject.transform.root.GetComponent<Status>();
+            status.DamagedThorax();
+        }
     }
 }
