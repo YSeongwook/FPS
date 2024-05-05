@@ -16,11 +16,14 @@ public class EnemyDamage : MonoBehaviour
         hp = maxHp;
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
-        if (collision.collider.tag == bulletTag)
+        Debug.Log("trigger");
+        if (other.CompareTag(bulletTag))
         {
-            ShowBloodEffect(collision);
+            GetComponent<EnemyAI>().traceDis = 100.0f;
+            GetComponent<EnemyAI>().state = EnemyAI.State.TRACE;
+            ShowBloodEffect(other.transform.position);
             //collision.gameObject.SetActive(false);
             hp -= 10;
 
@@ -29,20 +32,23 @@ public class EnemyDamage : MonoBehaviour
             if (hp <= 0f)
             {
                 GetComponent<EnemyAI>().state = EnemyAI.State.DIE;
+
+
             }
         }
     }
 
-    private void ShowBloodEffect(Collision collision)
+    private void ShowBloodEffect(Vector3 position)
     {
-        Vector3 pos = collision.contacts[0].point;      // 최초 충돌 지점의 
-        Vector3 _normal = collision.contacts[0].normal; // 법선 벡터를 구하여
-        Quaternion rot = Quaternion.FromToRotation(-Vector3.forward, _normal); // 회전값 계산
+        //Vector3 pos = collision.contacts[0].point;      // 최초 충돌 지점의 
+        //Vector3 _normal = collision.contacts[0].normal; // 법선 벡터를 구하여
+        // Quaternion rot = Quaternion.FromToRotation(-Vector3.forward, _normal); // 회전값 계산
+
         // -Vector3.forward를 충돌점의 법선벡터가 바라보는 방향과 일치 시키기
 
         GameObject blood = ObjectPool.Instance.DequeueObject(bloodEffect);
 
-        blood.transform.position = pos;
-        blood.transform.rotation = rot;
+        blood.transform.position = position;
+        blood.transform.rotation = Quaternion.identity;
     }
 }

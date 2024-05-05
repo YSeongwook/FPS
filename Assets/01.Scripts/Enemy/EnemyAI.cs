@@ -21,9 +21,9 @@ public class EnemyAI : MonoBehaviour
     private MoveAgent moveAgent;
     private EnemyFire enemyFire;
 
-    public float attackDist = 5.0f; // 공격 거리
-    public float traceDis = 10.0f;  // 쫓아가는 거리
-
+    public float attackDist = 8.0f; // 공격 거리
+    public float traceDis = 15.0f;  // 쫓아가는 거리
+    public float staticTraceDis = 15.0f;    // 고정 거리
     public bool isDie = false;
 
     private WaitForSeconds ws; // 코루틴 지연시간 변수
@@ -101,6 +101,7 @@ public class EnemyAI : MonoBehaviour
                     animator.SetBool(hashMove, true);
                     break;
                 case State.ATTACK:
+                    traceDis = staticTraceDis;
                     moveAgent.Stop();
                     animator.SetBool(hashMove, false);
 
