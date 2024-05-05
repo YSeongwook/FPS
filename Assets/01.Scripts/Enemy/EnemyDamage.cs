@@ -1,4 +1,5 @@
 using UnityEngine;
+using EnumTypes;
 
 public class EnemyDamage : MonoBehaviour
 {
@@ -16,14 +17,14 @@ public class EnemyDamage : MonoBehaviour
         hp = maxHp;
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnCollisionEnter(Collision col)
     {
         Debug.Log("trigger");
-        if (other.CompareTag(bulletTag))
+        if (col.collider.CompareTag(bulletTag))
         {
             GetComponent<EnemyAI>().traceDis = 100.0f;
             GetComponent<EnemyAI>().state = EnemyAI.State.TRACE;
-            ShowBloodEffect(other.transform.position);
+            ShowBloodEffect(col.transform.position);
             //collision.gameObject.SetActive(false);
             hp -= 10;
 

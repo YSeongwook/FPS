@@ -3,9 +3,16 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
 
-    private void OnTriggerEnter(Collider other)
+    private void OnCollisionEnter(Collision col)
     {
-        ProjectileDisable(other.transform.position);
+        Debug.Log("총알 트리거");
+        ProjectileDisable(col.transform.position);
+    }
+
+    private void OnTriggerEnter(Collider col)
+    {
+        Debug.Log("총알 트리거");
+        ProjectileDisable(col.transform.position);
     }
 
     void ProjectileDisable(Vector3 hitPosition)
