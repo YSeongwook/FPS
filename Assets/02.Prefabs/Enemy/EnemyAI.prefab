@@ -4206,6 +4206,7 @@ MonoBehaviour:
   state: 0
   attackDist: 8
   traceDis: 15
+  staticTraceDis: 15
   isDie: 0
   changeMaterial: {fileID: 2100000, guid: 47be28ae53899c440a4bdc7de32df96c, type: 2}
   changeMaterialTime: 2
@@ -4256,6 +4257,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a6d167c50bc3454ea372d3d89dc6590, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxHp: 100
+  hp: 0
   bloodEffect: {fileID: 166404, guid: 78e1c8c5b281b8b439229473779ac9aa, type: 3}
 --- !u!1 &1398631465740979007
 GameObject:
