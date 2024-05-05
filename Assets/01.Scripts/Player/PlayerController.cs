@@ -22,6 +22,7 @@ public class PlayerController : MonoBehaviour
     private bool isFire = false;
     private bool isZoom = false;
 
+
     [Header("Bullet")]
     public GameObject bullet;
     public GameObject bullet_Shell;
@@ -31,6 +32,7 @@ public class PlayerController : MonoBehaviour
     private float delayCount = 0.1f;
     private bool isReload = false;
 
+    public Hpmanager hpmanager;
     void Start()
     {
         animator = GetComponent<Animator>();
@@ -39,6 +41,8 @@ public class PlayerController : MonoBehaviour
         Cursor.visible = false;
 
         SetCamType(false);
+
+        hpmanager = gameObject.GetComponent<Hpmanager>();
     }
 
     void Update()
@@ -184,7 +188,7 @@ public class PlayerController : MonoBehaviour
 
     void OnAim(InputValue inputValue)
     {
-        mouseDeltaPos = inputValue.Get<Vector2>();    
+        mouseDeltaPos = inputValue.Get<Vector2>();
     }
 
     void OnReload(InputValue inputValue)
@@ -198,4 +202,21 @@ public class PlayerController : MonoBehaviour
             Reload();
         }
     }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+            HpChek(collision);
+    }
+    void HpChek(Collision collision) //충돌한 컬라이더의 hp가 있는지 체크후 연산
+    {
+        GameObject colObject = collision.gameObject; //충돌한 컬라이더의 오브젝트를 불러옴
+
+        Bullet bullet = colObject.GetComponent<Bullet>(); //hp매니저를 흭득시도
+
+        if (bullet != null) //충돌한 컬라이더에게 bullet이 있을시 처리
+        {
+            hpmanager.hpChange(20);
+        }
+    }
+
 }
