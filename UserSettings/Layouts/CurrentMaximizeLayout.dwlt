@@ -26,7 +26,7 @@ MonoBehaviour:
   m_MinSize: {x: 400, y: 200}
   m_MaxSize: {x: 32384, y: 16192}
   vertical: 0
-  controlID: 60359
+  controlID: 61040
 --- !u!114 &2
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -144,7 +144,7 @@ MonoBehaviour:
   m_MinSize: {x: 100, y: 200}
   m_MaxSize: {x: 8096, y: 16192}
   vertical: 1
-  controlID: 60360
+  controlID: 61041
 --- !u!114 &4
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -640,9 +640,9 @@ MonoBehaviour:
       e32: 0
       e33: 1
   m_PreviewAnimator: {fileID: 0}
-  m_AnimatorController: {fileID: 9100000, guid: 8ee4111d05561254ea58f4dea62698b5, type: 2}
+  m_AnimatorController: {fileID: 9100000, guid: 5eb2b0952f459404cae3554726b2f958, type: 2}
   m_BreadCrumbs:
-  - m_Target: {fileID: 345135318631937165, guid: 8ee4111d05561254ea58f4dea62698b5, type: 2}
+  - m_Target: {fileID: 345135318631937165, guid: 5eb2b0952f459404cae3554726b2f958, type: 2}
     m_ScrollPosition: {x: 0, y: 0}
   stateMachineGraph: {fileID: 0}
   stateMachineGraphGUI: {fileID: 0}
@@ -769,9 +769,9 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 5c860000
+      m_SelectedIDs: fa3e1200
       m_LastClickedID: 0
-      m_ExpandedIDs: 4c27f7ff38d6f7ffe6e1f7ff5efdf7ffc680f8ffcc80f8ffdc80f8ffe080f8fffc80f8ff0281f8ff0a81f8ff1081f8ff3481f8ff3681f8ff3a81f8ff3282f8ff5a82f8ff5e82f8fff282f8ff4683f8ff4a83f8ff4e83f8ff5283f8ff5683f8ff3cdaf8fff621f9ff487cf9ff4a7cf9ff4c7cf9ff4e7cf9ff507cf9ff567cf9ff587cf9ff5a7cf9ff5c7cf9ff8a7cf9ff8c7cf9ffb67cf9ffbc7cf9ffbe7cf9ffc07cf9ffc87cf9ffbe94f9ffdca0f9ff02f9f9ff06f9f9ff36f9f9ff42f9f9ff4ef9f9ff52f9f9ffa2f9f9ffa6f9f9ffaaf9f9ffaef9f9ffb050faff84a5faff8ea5faff98a5faff9ca5faffe8a5faffeca5fafff0a5fafff4a5fafff8a5fafff6fcfaff665efbff96f1fbff1052fcff4ec0fcffcc09fdffb219fdff0084fdffcaecfdffd234fefff48ffefff402ffff9e4afffffaacffff14fbfffff4ffffff30990000183f0400383f04004e3f0400563f04006c3f04009a3f04009c3f0400bc3f0400be3f0400c03f040088d7060096650c0076690c0036431200e64a1200584b1200044c1200724d12001c4e1200284e1200104f1200a65012003e581200e0591200405c120038261b005a8a25006e8e2500ea902500bc9325007c95250096982500889c25009e9c25007c9d2500629e25006a9e2500709f25009e9f2500d69f2500
+      m_ExpandedIDs: daa6f5ff44a7f5ffc2fdf5ff7677f6fff2d2f6ff4c27f7ff38d6f7ffe6e1f7ff5efdf7ffc680f8ffcc80f8ffdc80f8ffe080f8fffc80f8ff0281f8ff0a81f8ff1081f8ff3481f8ff3681f8ff3a81f8ff3282f8ff5a82f8ff5e82f8fff282f8ff4683f8ff4a83f8ff4e83f8ff5283f8ff5683f8ff3cdaf8fff621f9ff487cf9ff4a7cf9ff4c7cf9ff4e7cf9ff507cf9ff567cf9ff587cf9ff5a7cf9ff5c7cf9ff8a7cf9ff8c7cf9ffb67cf9ffbc7cf9ffbe7cf9ffc07cf9ffc87cf9ffbe94f9ffdca0f9ff02f9f9ff06f9f9ff36f9f9ff42f9f9ff4ef9f9ff52f9f9ffa2f9f9ffa6f9f9ffaaf9f9ffaef9f9ffb050faff84a5faff8ea5faff98a5faff9ca5faffe8a5faffeca5fafff0a5fafff4a5fafff8a5fafff6fcfaff665efbff96f1fbff1052fcff4ec0fcffcc09fdffb219fdff0084fdffcaecfdffd234fefff48ffefff402ffff9e4afffffaacffff14fbfffff4ffffff30990000183f0400383f04004e3f0400563f04006c3f04009a3f04009c3f0400bc3f0400be3f0400c03f040088d7060096650c0076690c0036431200e64a1200584b1200044c1200724d12001c4e1200284e1200104f1200a65012003e581200e0591200405c120038261b005a8a25006e8e2500ea902500bc9325007c95250096982500889c25009e9c25007c9d2500629e25006a9e2500709f25009e9f2500d69f2500
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -861,37 +861,37 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Imports/PolygonBattleRoyale/Prefabs/FX
+    - Assets/01.Scripts/BodyPart
     m_Globs: []
     m_OriginalText: 
     m_FilterByTypeIntersection: 0
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Imports/PolygonBattleRoyale/Prefabs/FX
+  - Assets/01.Scripts/BodyPart
   m_LastFoldersGridSize: -1
   m_LastProjectPath: D:\Git\FPS
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 0cfe0300
-    m_LastClickedID: 261644
-    m_ExpandedIDs: 000000006494000066940000689400006c9400006e94000070940000729400001a95000004fe030000ca9a3b
+    m_SelectedIDs: 307f1700
+    m_LastClickedID: 1539888
+    m_ExpandedIDs: 000000006494000066940000689400006a9400006c9400006e9400007094000004fe030000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
-      m_Name: 
-      m_OriginalName: 
+      m_Name: GameControl
+      m_OriginalName: GameControl
       m_EditFieldRect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 0
         height: 0
-      m_UserData: 0
+      m_UserData: 3047066
       m_IsWaitingForDelay: 0
       m_IsRenaming: 0
-      m_OriginalEventType: 11
+      m_OriginalEventType: 0
       m_IsRenamingFilename: 1
       m_ClientGUIView: {fileID: 11}
     m_SearchString: 
@@ -930,8 +930,8 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
-    m_SelectedInstanceIDs: 5c860000
-    m_LastClickedInstanceID: 34396
+    m_SelectedInstanceIDs: fa3e1200
+    m_LastClickedInstanceID: 1195770
     m_HadKeyboardFocusLastEvent: 1
     m_ExpandedInstanceIDs: 4c4d0800304d0800484d0800
     m_RenameOverlay:

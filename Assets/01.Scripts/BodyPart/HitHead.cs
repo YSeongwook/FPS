@@ -18,7 +18,9 @@ public class HitHead : MonoBehaviour
         if (collision.collider.tag == bulletTag)
         {
             ShowBloodEffect(collision);
-            EventManager<HitBodyPart>.TriggerEvent(HitBodyPart.HitHead);
+            // EventManager<HitBodyPart>.TriggerEvent(HitBodyPart.HitHead);
+
+            CheckPlayerOrEnemy();
         }
     }
 
@@ -34,5 +36,19 @@ public class HitHead : MonoBehaviour
 
         blood.transform.position = pos;
         blood.transform.rotation = rot;
+    }
+
+    void CheckPlayerOrEnemy()
+    {
+        if (gameObject.transform.root.CompareTag("Enemy"))
+        {
+            EnemyDamage enemyDamage = gameObject.transform.root.GetComponent<EnemyDamage>();
+            enemyDamage.DamagedHead();
+        }
+        else
+        {
+            Status status = gameObject.transform.root.GetComponent<Status>();
+            status.DamagedHead();
+        }
     }
 }

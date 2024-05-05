@@ -1,7 +1,3 @@
-using EnumTypes;
-using EventLibrary;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class HitLeg : MonoBehaviour
@@ -21,7 +17,9 @@ public class HitLeg : MonoBehaviour
         if (collision.collider.tag == bulletTag)
         {
             ShowBloodEffect(collision);
-            EventManager<HitBodyPart>.TriggerEvent(HitBodyPart.HitLeg);
+            // EventManager<HitBodyPart>.TriggerEvent(HitBodyPart.HitLeg);
+
+            CheckPlayerOrEnemy();
         }
     }
 
@@ -31,11 +29,25 @@ public class HitLeg : MonoBehaviour
         Vector3 _normal = collision.contacts[0].normal; // 법선 벡터를 구하여
         Quaternion rot = Quaternion.FromToRotation(-Vector3.forward, _normal); // 회전값 계산
 
-        // -Vector3.forward를 충돌점의 법선벡터가 바라보는 방향과 일치 시키기
+        // -Vector3.forward를 충돌점의 법선 벡터가 바라보는 방향과 일치 시키기
 
         GameObject blood = ObjectPool.Instance.DequeueObject(bloodEffect);
 
         blood.transform.position = pos;
         blood.transform.rotation = rot;
+    }
+
+    void CheckPlayerOrEnemy()
+    {
+        if (gameObject.transform.root.CompareTag("Enemy"))
+        {
+            EnemyDamage enemyDamage = gameObject.transform.root.GetComponent<EnemyDamage>();
+            enemyDamage.DamagedLeg();
+        }
+        else
+        {
+            Status status = gameObject.transform.root.GetComponent<Status>();
+            status.DamagedLeg();
+        }
     }
 }
