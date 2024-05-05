@@ -3667,6 +3667,7 @@ MonoBehaviour:
   _allPlayersReady: 0
   roomSlots: []
   clientIndex: 0
+  maxPlayerCount: 0
 --- !u!4 &1351439268
 Transform:
   m_ObjectHideFlags: 0
@@ -4730,7 +4731,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: a6964853b6912fa48bcc06978907a6e2, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 049fc3136c1b6d64d94598c1d2bc34a7, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

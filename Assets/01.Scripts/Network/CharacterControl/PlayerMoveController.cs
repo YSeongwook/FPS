@@ -1,5 +1,3 @@
-using Cinemachine;
-using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using Mirror;
@@ -55,7 +53,7 @@ public class PlayerMoveController : NetworkBehaviour
         Debug.Log($"isLocalPlayer : {isLocalPlayer}");
         // Object가 Client 소유인지 여부 확인
         if (isLocalPlayer)
-            moveVectorTarget = inputValue.Get<Vector2>();//인풋 벡터 받아옴
+            moveVectorTarget = inputValue.Get<Vector2>(); // 인풋 벡터 받아옴
     }
 
     void OnSprint(InputValue inputValue)
@@ -64,7 +62,7 @@ public class PlayerMoveController : NetworkBehaviour
         if (isLocalPlayer)
         {
             float value = inputValue.Get<float>();
-            moveSpeed = (value * 4f) + 1f;
+            moveSpeed = (value * 2f) + 2f;
         }
     }
 }
