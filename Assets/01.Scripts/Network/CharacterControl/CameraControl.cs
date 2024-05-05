@@ -50,7 +50,7 @@ public class CameraControl : NetworkBehaviour
         //    fpsVCam.Priority = 20;
         //}
 
-        tpsVCam = tpsPos.GetComponent<CinemachineVirtualCamera>();
+        //tpsVCam = tpsPos.GetComponent<CinemachineVirtualCamera>();
 
         // Cursor.visible = false;
 
@@ -78,9 +78,9 @@ public class CameraControl : NetworkBehaviour
 
     void CamRotate()
     {
-        tpsVCam.transform.position = this.transform.position + new Vector3(0, 1.5f, 0);
+        tpsPos.transform.position = this.transform.position + new Vector3(0, 1.5f, 0);
 
-        Vector3 camAngle = tpsVCam.transform.rotation.eulerAngles;
+        Vector3 camAngle = tpsPos.transform.rotation.eulerAngles;
 
         if (isZoom) mouseDeltaPos *= 0.1f;
         else mouseDeltaPos *= 0.2f;
@@ -91,17 +91,17 @@ public class CameraControl : NetworkBehaviour
         else x = Mathf.Clamp(x, 345f, 361f);
 
         // 현재 회전 상태와 목표 회전 상태를 쿼터니언으로 변환합니다.
-        Quaternion currentRotation = tpsVCam.transform.rotation;
+        Quaternion currentRotation = tpsPos.transform.rotation;
         Quaternion targetRotation = Quaternion.Euler(x, camAngle.y + mouseDeltaPos.x, camAngle.z);
 
         // 현재 회전 상태에서 목표 회전 상태로 부드럽게 보간합니다.
-        tpsVCam.transform.rotation = Quaternion.Slerp(currentRotation, targetRotation, Time.deltaTime * 80);
+        tpsPos.transform.rotation = Quaternion.Slerp(currentRotation, targetRotation, Time.deltaTime * 80);
         mouseDeltaPos *= 0.3f;
     }
 
     void RotateOrder()
     {
-        Vector3 direction = (tpsVCam.transform.forward).normalized;
+        Vector3 direction = (tpsPos.transform.forward).normalized;
 
         Quaternion rotationWeapon = Quaternion.LookRotation(direction);
         rotationWeapon = Quaternion.Euler(rotationWeapon.eulerAngles.x - 10f, this.transform.rotation.eulerAngles.y, rotationWeapon.eulerAngles.z);
@@ -118,7 +118,7 @@ public class CameraControl : NetworkBehaviour
     {
         if (isFps)
         {
-            fpsVCam.Priority = 15;
+            fpsVCam.Priority = 21;
         }
         else
         {
