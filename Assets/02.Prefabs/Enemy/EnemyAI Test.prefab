@@ -10,8 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 5476896068238941263}
   - component: {fileID: 4969728843972056445}
+  - component: {fileID: 2253557238095976972}
   m_Layer: 0
-  m_Name: CBody
+  m_Name: CThorax
   m_TagString: Body
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -45,6 +46,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.7530474, y: 0.2027479, z: 0.34153777}
   m_Center: {x: -0.12347633, y: 0.012315886, z: 0.007407234}
+--- !u!114 &2253557238095976972
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 659743331764256178}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6cb783d1e9ad6d449956a379bdf74590, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bloodEffect: {fileID: 0}
 --- !u!1 &1647978955417435182
 GameObject:
   m_ObjectHideFlags: 0
@@ -55,6 +69,7 @@ GameObject:
   m_Component:
   - component: {fileID: 450260194485504201}
   - component: {fileID: 293270248133370844}
+  - component: {fileID: 8424006957328879892}
   m_Layer: 0
   m_Name: 'CArm_R '
   m_TagString: Arm
@@ -91,6 +106,19 @@ CapsuleCollider:
   m_Height: 0.51971996
   m_Direction: 1
   m_Center: {x: -0.3268928, y: -0.18617287, z: 0.0006283449}
+--- !u!114 &8424006957328879892
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1647978955417435182}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2923b2c93df435f4bb4bf8d5fb106364, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bloodEffect: {fileID: 0}
 --- !u!1 &1949044155359770655
 GameObject:
   m_ObjectHideFlags: 0
@@ -101,6 +129,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2262225702196609403}
   - component: {fileID: 3309829366207295527}
+  - component: {fileID: 6637706545107285183}
   m_Layer: 0
   m_Name: CLeg_R (1)
   m_TagString: Leg
@@ -137,6 +166,19 @@ CapsuleCollider:
   m_Height: 0.6156831
   m_Direction: 1
   m_Center: {x: -0.012676155, y: -0.6718246, z: 0.027839124}
+--- !u!114 &6637706545107285183
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1949044155359770655}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ff1714f043c74646a89f088df96d07a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bloodEffect: {fileID: 0}
 --- !u!1 &2392115589745379762
 GameObject:
   m_ObjectHideFlags: 0
@@ -147,6 +189,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8209363367666748740}
   - component: {fileID: 6081407801332771851}
+  - component: {fileID: 4077446766890647372}
   m_Layer: 0
   m_Name: CLeg_L (1)
   m_TagString: Leg
@@ -179,10 +222,23 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.056041814
-  m_Height: 0.625646
+  m_Radius: 0.05606547
+  m_Height: 0.54477835
   m_Direction: 1
-  m_Center: {x: -0.012676002, y: -0.6071246, z: -0.019780982}
+  m_Center: {x: -0.012676057, y: -0.6475599, z: -0.012112533}
+--- !u!114 &4077446766890647372
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2392115589745379762}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ff1714f043c74646a89f088df96d07a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bloodEffect: {fileID: 0}
 --- !u!1 &4052912630725792749
 GameObject:
   m_ObjectHideFlags: 0
@@ -193,6 +249,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7784280729028031709}
   - component: {fileID: 5469261863034916741}
+  - component: {fileID: 7411585258912652172}
   m_Layer: 0
   m_Name: CLeg_R
   m_TagString: Leg
@@ -229,6 +286,19 @@ CapsuleCollider:
   m_Height: 0.5449103
   m_Direction: 1
   m_Center: {x: -0.012676029, y: -0.21098039, z: 0.007843842}
+--- !u!114 &7411585258912652172
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4052912630725792749}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ff1714f043c74646a89f088df96d07a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bloodEffect: {fileID: 0}
 --- !u!1 &4999138109393076115
 GameObject:
   m_ObjectHideFlags: 0
@@ -239,6 +309,7 @@ GameObject:
   m_Component:
   - component: {fileID: 390945274912906657}
   - component: {fileID: 4386532420677527190}
+  - component: {fileID: 1111691706}
   m_Layer: 0
   m_Name: CArm_L
   m_TagString: Arm
@@ -275,6 +346,19 @@ CapsuleCollider:
   m_Height: 0.5102025
   m_Direction: 1
   m_Center: {x: -0.3111952, y: 0.15822138, z: 0.00062836614}
+--- !u!114 &1111691706
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4999138109393076115}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2923b2c93df435f4bb4bf8d5fb106364, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bloodEffect: {fileID: 0}
 --- !u!1 &5272272737496049236
 GameObject:
   m_ObjectHideFlags: 0
@@ -285,6 +369,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4956736342283351945}
   - component: {fileID: 4169109672983655413}
+  - component: {fileID: 4246312764226126224}
   m_Layer: 0
   m_Name: CLeg_L
   m_TagString: Leg
@@ -321,6 +406,19 @@ CapsuleCollider:
   m_Height: 0.5297822
   m_Direction: 1
   m_Center: {x: -0.01267602, y: -0.2034142, z: 0.00047166765}
+--- !u!114 &4246312764226126224
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5272272737496049236}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ff1714f043c74646a89f088df96d07a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bloodEffect: {fileID: 0}
 --- !u!1 &5510591662720251916
 GameObject:
   m_ObjectHideFlags: 0
@@ -331,6 +429,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6441953359524392068}
   - component: {fileID: 2802301113665141644}
+  - component: {fileID: 1087466671}
   m_Layer: 0
   m_Name: CHead
   m_TagString: Head
@@ -364,9 +463,22 @@ CapsuleCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.1306418
-  m_Height: 0.3684926
+  m_Height: 0.3322638
   m_Direction: 1
-  m_Center: {x: 0.0025899708, y: 0.07096732, z: 0.0037478523}
+  m_Center: {x: 0.0025899708, y: 0.052852914, z: 0.0037478518}
+--- !u!114 &1087466671
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5510591662720251916}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1900efe3a15cddd4bb0e66a8636b3beb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bloodEffect: {fileID: 0}
 --- !u!1 &6804436405620549888
 GameObject:
   m_ObjectHideFlags: 0
@@ -377,6 +489,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1211273721696803873}
   - component: {fileID: 7851984560072464748}
+  - component: {fileID: 808005458011712559}
   m_Layer: 0
   m_Name: CArm_R
   m_TagString: Arm
@@ -413,6 +526,19 @@ CapsuleCollider:
   m_Height: 0.5012875
   m_Direction: 1
   m_Center: {x: -0.3026151, y: 0.19530442, z: 0.0006283278}
+--- !u!114 &808005458011712559
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6804436405620549888}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2923b2c93df435f4bb4bf8d5fb106364, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bloodEffect: {fileID: 0}
 --- !u!1 &7099149004040521825
 GameObject:
   m_ObjectHideFlags: 0
@@ -1197,7 +1323,7 @@ NavMeshAgent:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7099149004516471180}
-  m_Enabled: 0
+  m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
   m_Speed: 3.5
@@ -1293,8 +1419,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHp: 100
-  hp: 0
-  bloodEffect: {fileID: 166404, guid: 78e1c8c5b281b8b439229473779ac9aa, type: 3}
+  currentHp: 0
 --- !u!1 &7099149004540296703
 GameObject:
   m_ObjectHideFlags: 0
@@ -5565,6 +5690,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6395388377154162117}
   - component: {fileID: 7089010195738852034}
+  - component: {fileID: 183338008}
   m_Layer: 0
   m_Name: CArm_L
   m_TagString: Arm
@@ -5601,3 +5727,16 @@ CapsuleCollider:
   m_Height: 0.4297169
   m_Direction: 1
   m_Center: {x: -0.32481974, y: -0.28514183, z: 0.000628366}
+--- !u!114 &183338008
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9070250999298007017}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2923b2c93df435f4bb4bf8d5fb106364, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bloodEffect: {fileID: 0}

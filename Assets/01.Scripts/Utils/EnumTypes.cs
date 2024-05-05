@@ -53,12 +53,15 @@ namespace EnumTypes
         ItemPickedUp,
         Home,
 
+        ShowRecordingUI
+    }
+
+    public enum HitBodyPart
+    {
         HitHead,
         HitThorax,
         HitArm,
-        HitLeg,
-
-        ShowRecordingUI
+        HitLeg
     }
 
     public class EnumTypes : MonoBehaviour { }
