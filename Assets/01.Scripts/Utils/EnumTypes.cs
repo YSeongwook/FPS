@@ -15,8 +15,8 @@ namespace EnumTypes
         Reserved2,
         Reserved3,
         Player,
-        World,
         Enemy,
+        World,
         Building
     }
 
@@ -29,8 +29,6 @@ namespace EnumTypes
     public enum ThrowableType
     {
         Grenade,
-        BossBomb,
-        BossHeavyBomb,
         EnemyGrenade,
     };
 
@@ -50,16 +48,20 @@ namespace EnumTypes
         GunUsed,
         GrenadeUsed,
 
-        MissionStart,
-        MissionEnd,
-        MissionSuccess,
-
         GameOver,
         Restart,
         ItemPickedUp,
         Home,
 
         ShowRecordingUI
+    }
+
+    public enum HitBodyPart
+    {
+        HitHead,
+        HitThorax,
+        HitArm,
+        HitLeg
     }
 
     public class EnumTypes : MonoBehaviour { }
