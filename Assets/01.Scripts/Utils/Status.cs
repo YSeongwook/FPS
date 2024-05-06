@@ -105,6 +105,9 @@ public class Status : NetworkBehaviour, IDamaged
             case "Leg":
                 animator.SetTrigger("Death_Bottom");
                 break;
+            case "Zone":
+                animator.SetTrigger("Death_Bottom");
+                break;
             default:
                 Debug.LogWarning("Unknown body part hit.");
                 break;
