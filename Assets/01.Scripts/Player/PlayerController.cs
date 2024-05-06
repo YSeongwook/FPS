@@ -1,9 +1,11 @@
 using Cinemachine;
+using Mirror;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UIElements;
 
-public class PlayerController : MonoBehaviour
+public class PlayerController : NetworkBehaviour
 {
     [SerializeField] private GameObject tpsPos;
     [SerializeField] private CinemachineVirtualCamera tpsVCam;
@@ -15,7 +17,7 @@ public class PlayerController : MonoBehaviour
     private Animator animator;
     private CharacterController cc;
 
-    private Vector2 moveVector = Vector2.zero;
+    [SyncVar] private Vector2 moveVector = Vector2.zero;
     private Vector2 moveVectorTarget;
     private Vector2 mouseDeltaPos = Vector2.zero;
     private float moveSpeed = 2f;
@@ -39,20 +41,24 @@ public class PlayerController : MonoBehaviour
         animator = GetComponent<Animator>();
         cc = GetComponent<CharacterController>();
 
-        Cursor.visible = false;
+        UnityEngine.Cursor.visible = false;
 
         SetCamType(false);
     }
 
     void Update()
     {
-        MoveOrder();    // 이동  
-        RotateOrder();  // 캐릭터 및 총기 회전
 
-        fireDelay += Time.deltaTime;
-        GunFire();      // 발사
+        if (isLocalPlayer)
+        {
+            MoveOrder();    // 이동  
+            RotateOrder();  // 캐릭터 및 총기 회전
 
-        SetVCamPriority();
+            fireDelay += Time.deltaTime;
+            GunFire();      // 발사
+
+            SetVCamPriority();
+        }
     }
 
     void SetVCamPriority()
@@ -63,7 +69,7 @@ public class PlayerController : MonoBehaviour
 
     private void LateUpdate()
     {
-        CamRotate();    // 카메라 회전
+        if (isLocalPlayer) CamRotate();    // 카메라 회전
     }
 
     private void MoveOrder()
@@ -104,7 +110,7 @@ public class PlayerController : MonoBehaviour
 
     void RotateOrder()
     {
-        Vector3 direction = (tpsVCam.transform.forward).normalized;
+        Vector3 direction = (tpsPos.transform.forward).normalized;
 
         Quaternion rotationWeapon = Quaternion.LookRotation(direction);
         rotationWeapon = Quaternion.Euler(rotationWeapon.eulerAngles.x - 10f, this.transform.rotation.eulerAngles.y, rotationWeapon.eulerAngles.z);
@@ -118,7 +124,7 @@ public class PlayerController : MonoBehaviour
 
     void SetCamType(bool isFps)
     {
-        if (isFps)
+        if (isFps && isLocalPlayer)
         {
             fpsVCam.Priority = 21;
         }
@@ -128,20 +134,33 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    [Command]
+    void CmdFireBullet(Vector3 position, Quaternion rotation)
+    {
+        GameObject bulletInstance = Instantiate(bullet, position, rotation);
+        bulletInstance.GetComponent<Rigidbody>().velocity = bulletInstance.transform.forward * 500;
+        NetworkServer.Spawn(bulletInstance);
+    }
+
     void GunFire()
     {
         if (fireDelay >= delayCount && isFire && shell > 0 && !isReload)
         {
             fireDelay = 0;
 
-            GameObject bulletInstance = ObjectPool.Instance.DequeueObject(bullet);
-            bulletInstance.transform.position = firePos.position;
+            //GameObject bulletInstance = ObjectPool.Instance.DequeueObject(bullet);
+            //GameObject bulletInstance = Instantiate(bullet, position, rotation);
+
+            //bulletInstance.transform.position = firePos.position;
 
             // 발사 각도를 조정하여 목표 회전 각도를 계산
             Quaternion fireRotation = Quaternion.Euler(firePos.rotation.eulerAngles.x, firePos.rotation.eulerAngles.y, firePos.rotation.eulerAngles.z);
-            bulletInstance.transform.rotation = fireRotation;
 
-            bulletInstance.GetComponent<Rigidbody>().velocity = bulletInstance.transform.forward * 500;
+            CmdFireBullet(firePos.position, fireRotation);
+
+            //bulletInstance.transform.rotation = fireRotation;
+
+            //bulletInstance.GetComponent<Rigidbody>().velocity = bulletInstance.transform.forward * 500;
 
             EffectManager.Instance.FireEffectGenenate(firePos.position, firePos.rotation);
             mouseDeltaPos = new Vector2(Random.Range(-1f, 1f), Random.Range(1f, 3f));
@@ -153,8 +172,11 @@ public class PlayerController : MonoBehaviour
 
     void Reload()
     {
-        animator.SetTrigger("Reload");
-        StartCoroutine(ReloadEnd());
+        if (isLocalPlayer)
+        {
+            animator.SetTrigger("Reload");
+            StartCoroutine(ReloadEnd());
+        }
     }
 
     IEnumerator ReloadEnd()
@@ -168,13 +190,18 @@ public class PlayerController : MonoBehaviour
 
     void OnMove(InputValue inputValue) // 이동(WASD)
     {
-        moveVectorTarget = inputValue.Get<Vector2>();//인풋 벡터 받아옴
+        Debug.Log($"isLocalPlayer : {isLocalPlayer}");
+        if (isLocalPlayer)
+            moveVectorTarget = inputValue.Get<Vector2>();//인풋 벡터 받아옴
     }
 
     void OnSprint(InputValue inputValue)
     {
-        float value = inputValue.Get<float>();
-        moveSpeed = (value * 2f) + 2f;
+        if (isLocalPlayer)
+        {
+            float value = inputValue.Get<float>();
+            moveSpeed = (value * 2f) + 2f;
+        }
     }
 
     void OnFire(InputValue inputValue)
@@ -210,7 +237,7 @@ public class PlayerController : MonoBehaviour
 
     void OnAim(InputValue inputValue)
     {
-        mouseDeltaPos = inputValue.Get<Vector2>();    
+        mouseDeltaPos = inputValue.Get<Vector2>();
     }
 
     void OnReload(InputValue inputValue)
