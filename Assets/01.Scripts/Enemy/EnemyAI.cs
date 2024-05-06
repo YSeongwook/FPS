@@ -19,7 +19,7 @@ public class EnemyAI : MonoBehaviour
 
     private Animator animator;
     private MoveAgent moveAgent;
-    private EnemyFire enemyFire;
+    private EnemyFire enemyFire;    
 
     public float attackDist = 8.0f; // 공격 거리
     public float traceDis = 15.0f;  // 쫓아가는 거리
@@ -31,6 +31,8 @@ public class EnemyAI : MonoBehaviour
     private SkinnedMeshRenderer skinnedMeshRenderer;
     public Material changeMaterial;
     public float changeMaterialTime = 1f;
+
+    public float audioDelayTime = 1f;
 
 
     // 애니메이터 컨트롤러에 정의한 파라미터의 해시 값을 미리 추출
@@ -56,6 +58,7 @@ public class EnemyAI : MonoBehaviour
         // 애니메이션의 시작 프레임과 속도가 다르기 때문에 걸음걸이가 조금씩 다르게
         animator.SetFloat(hashOffeset, Random.Range(0.0f, 1.0f));
         animator.SetFloat(hashWalkSpeed, Random.Range(1.0f, 1.2f));
+
     }
 
     private void OnEnable()
@@ -122,12 +125,14 @@ public class EnemyAI : MonoBehaviour
             }
         }
     }
-
+    
 
     void Update()
     {
         animator.SetFloat(hashSpeed, moveAgent.speed);
     }
+
+
 
     // 사망 시 Material 변경
     IEnumerator TransitionMaterialColor()

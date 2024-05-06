@@ -3,7 +3,9 @@ using UnityEngine;
 
 public class EnemyFire : MonoBehaviour
 {
-    private AudioSource audio;
+    public AudioSource gunShot;
+    public AudioSource reload;
+
     private Animator animator;
     private Transform playerTr;
     private Transform enemyTr;
@@ -24,9 +26,7 @@ public class EnemyFire : MonoBehaviour
     private WaitForSeconds wsReload;
 
     public bool isFire = false;
-    public AudioClip fireSfx;
-    public AudioClip reloadSfx;
-
+  
     [Header("Bullet")]
     public GameObject bullet;
     public GameObject bullet_Shell;
@@ -42,8 +42,6 @@ public class EnemyFire : MonoBehaviour
     {      
         enemyTr = GetComponent<Transform>();
         animator = GetComponent<Animator>();
-        audio = GetComponent<AudioSource>();
-
         wsReload = new WaitForSeconds(realoadTime);
     }
 
@@ -72,7 +70,6 @@ public class EnemyFire : MonoBehaviour
         randomY = (Random.Range(0, 0.3f));
         randomFirePos = new Vector3(randomX, 0f, randomY);
         animator.SetTrigger(hashFire);
-        //audio.PlayOneShot(fireSfx, 1.0f);
 
         GameObject bulletIst = ObjectPool.Instance.DequeueObject(bullet);
         bulletIst.transform.position = firePos.position + randomFirePos;
@@ -81,7 +78,7 @@ public class EnemyFire : MonoBehaviour
         bulletIst.GetComponent<Rigidbody>().velocity = bulletIst.transform.forward * 500;
 
         EffectManager.Instance.FireEffectGenenate(firePos.position, firePos.rotation);
-
+        gunShot.PlayOneShot(gunShot.clip);
         isReload = (--currBullet % maxBullet == 0);
 
         if (isReload)
@@ -93,7 +90,7 @@ public class EnemyFire : MonoBehaviour
     IEnumerator Reloading()
     {
         animator.SetTrigger(hashReload);
-        audio.PlayOneShot(reloadSfx, 1.0f);
+        reload.PlayOneShot(reload.clip);
 
         yield return wsReload;
 
