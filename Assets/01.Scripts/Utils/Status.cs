@@ -99,6 +99,7 @@ public class Status : NetworkBehaviour, IDamaged
     public void DamagedHead()
     {
         // 즉사
+        // RequestDamage(maxHp, "Head");
         RequestDamage(maxHp, "Head");
     }
 

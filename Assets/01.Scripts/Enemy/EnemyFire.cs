@@ -48,7 +48,7 @@ public class EnemyFire : MonoBehaviour
         wsReload = new WaitForSeconds(realoadTime);
 
         MinFireTime = 0f;
-        MaxFireTime = 1f;
+        MaxFireTime = 2f;
     }
 
     void Update()

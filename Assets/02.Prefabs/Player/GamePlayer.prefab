@@ -1008,6 +1008,8 @@ MonoBehaviour:
   syncInterval: 0
   maxHp: 100
   currentHp: 0
+  s_text: {fileID: 0}
+  healthBar: {fileID: 0}
   animator: {fileID: 5764996553539509007}
   chracterController: {fileID: 5764996553539508992}
   playerController: {fileID: 5764996553539508995}
@@ -1977,6 +1979,13 @@ MonoBehaviour:
   bullet: {fileID: 1003485616670832, guid: 286d72a07d877924eb1f9ef783716ee5, type: 3}
   bullet_Shell: {fileID: 131604, guid: 8698f59a8ea9a0c449a001968fa1db7f, type: 3}
   shell: 30
+  HandGrenade: {fileID: 1000582683020524, guid: 4ee45bf4b0f36534aa3364f75a1e64e5, type: 3}
+  Hand: {fileID: 5764996553540815232}
+  grenadeInstance: {fileID: 0}
+  Grenadeint: 10
+  throwTime: 1
+  isGreanade: 0
+  startGreande: 0
   gunShot: {fileID: 7100335521744754948}
   reload: {fileID: 2751939483199247028}
   canSprint: 0
@@ -3899,7 +3908,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 2eb86272c65d55b4082b0ae0d92c85bb, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.5
   m_Pitch: 1
   Loop: 0
   Mute: 0

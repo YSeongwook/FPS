@@ -1,10 +1,8 @@
 using Cinemachine;
 using Mirror;
 using System.Collections;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.UIElements;
 
 public class PlayerController : NetworkBehaviour
 {
@@ -28,6 +26,15 @@ public class PlayerController : NetworkBehaviour
     public GameObject bullet;
     public GameObject bullet_Shell;
     public int shell = 30;
+
+    [Header("Grenade")]
+    public GameObject HandGrenade;
+    public GameObject Hand;
+    public GameObject grenadeInstance;
+    public int Grenadeint = 2;
+    public float throwTime = 1;
+    public bool isGreanade = false;
+    public bool startGreande = false;
 
     [Header("Speed")]
     private float moveSpeed = 2f;
@@ -62,7 +69,7 @@ public class PlayerController : NetworkBehaviour
         animator = GetComponent<Animator>();
         cc = GetComponent<CharacterController>();
 
-        UnityEngine.Cursor.visible = false;
+        Cursor.visible = false;
 
         SetCamType(false);
 
@@ -71,7 +78,6 @@ public class PlayerController : NetworkBehaviour
 
     void Update()
     {
-
         if (isLocalPlayer)
         {
             MoveOrder();    // 이동  
@@ -81,6 +87,7 @@ public class PlayerController : NetworkBehaviour
             GunFire();      // 발사
 
             SetVCamPriority();
+            GrenadeTimer();
         }
     }
 
@@ -105,7 +112,6 @@ public class PlayerController : NetworkBehaviour
         Vector3 moveVector3 = new Vector3(moveVector.x * 0.5f, Physics.gravity.y, moveVector.y);
 
         cc.Move(this.transform.rotation * moveVector3 * Time.deltaTime);
-
     }
 
     void CamRotate()
@@ -192,7 +198,6 @@ public class PlayerController : NetworkBehaviour
         }
     }
 
-
     void Reload()
     {
         if (isLocalPlayer)
@@ -224,7 +229,7 @@ public class PlayerController : NetworkBehaviour
         if (isLocalPlayer)
         {
             float value = inputValue.Get<float>();
-            if(canSprint) moveSpeed = (value * 2f) + 2f;
+            if (canSprint) moveSpeed = (value * 2f) + 2f;
         }
     }
 
@@ -273,6 +278,62 @@ public class PlayerController : NetworkBehaviour
         {
             isReload = true;
             Reload();
+        }
+    }
+
+    void OnGrenade(InputValue inputValue)
+    {
+        Debug.Log("OnGrenade");
+
+        if(isLocalPlayer)
+        {
+            if (!isReload && !isFire && !isGreanade && Grenadeint > 0)
+            {
+                isGreanade = true;
+                Grenade();
+            }
+        }
+    }
+
+    void Grenade()
+    {
+        Hand.SetActive(false);
+        animator.SetTrigger("Grenade");
+        StartCoroutine(GreandeEnd());
+    }
+
+    IEnumerator GreandeEnd()
+    {
+        grenadeInstance = ObjectPool.Instance.DequeueObject(HandGrenade);
+        Grenade GrenadeScript = grenadeInstance.GetComponent<Grenade>();
+        GrenadeScript.Hand = Hand;
+        GrenadeScript.inHand = true;
+        grenadeInstance.transform.position = Hand.transform.position;
+        yield return new WaitForSeconds(2f);
+        isGreanade = false;
+        Grenadeint--;
+        Hand.SetActive(true);
+        throwTime = 1;
+        //UiManager.Instance.transGrenade(Grenadeint); 
+    }
+    void Fin()
+    {
+        Debug.Log("finforPlayer");
+        Grenade a = grenadeInstance.GetComponent<Grenade>();
+        a.Fin();
+
+    }
+    void Trhow()
+    {
+        Debug.Log("Trhowforplayer");
+        Grenade a = grenadeInstance.GetComponent<Grenade>();
+        a.Trhow(throwTime);
+    }
+    void GrenadeTimer()
+    {
+        if (Keyboard.current.digit4Key.isPressed && isGreanade)
+        {
+            throwTime += Time.deltaTime * 2;
         }
     }
 }
