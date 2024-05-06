@@ -43,7 +43,6 @@ public class Status : NetworkBehaviour, IDamaged
         }
     }
 
-
     [Server]
     public void TakeDamage(float damage, string hitBodyPart)
     {
