@@ -1864,6 +1864,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5dfe093445c90f741a2344a452aaa259, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tpsPos: {fileID: 0}
   tpsVCam: {fileID: 0}
   fpsVCam: {fileID: 7005588376733171144}
   weaponPos: {fileID: 7005588375515182872}
@@ -1887,6 +1888,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHp: 100
   currentHp: 0
+  animator: {fileID: 7005588375837241700}
 --- !u!1 &7005588375911587757
 GameObject:
   m_ObjectHideFlags: 0

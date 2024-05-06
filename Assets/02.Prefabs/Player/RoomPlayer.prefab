@@ -357,6 +357,7 @@ GameObject:
   - component: {fileID: 5686217313756588468}
   - component: {fileID: 5686217313756588471}
   - component: {fileID: 5686217313756588470}
+  - component: {fileID: 537089956378839057}
   m_Layer: 0
   m_Name: RoomPlayer
   m_TagString: Untagged
@@ -416,6 +417,21 @@ MonoBehaviour:
   serverOnly: 0
   visibility: 0
   hasSpawned: 0
+--- !u!114 &537089956378839057
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5686217313756588469}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea6edb22ea52ad248bb901a558f99d3d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHp: 100
+  currentHp: 0
+  animator: {fileID: 7142927980885865819}
 --- !u!1 &5847127374213721307
 GameObject:
   m_ObjectHideFlags: 0
@@ -5487,6 +5503,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 208bcfbc2cf8c964abedcb6e6f85b008, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  syncDirection: 0
+  syncMode: 0
+  syncInterval: 0
   TextMeshProUGUI: {fileID: 7050493389755204153}
 --- !u!1 &7095374262429236449
 GameObject:

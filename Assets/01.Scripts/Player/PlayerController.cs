@@ -1,10 +1,9 @@
 using Cinemachine;
-using Mirror;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PlayerController : NetworkBehaviour
+public class PlayerController : MonoBehaviour
 {
     [SerializeField] private GameObject tpsPos;
     [SerializeField] private CinemachineVirtualCamera tpsVCam;
@@ -16,7 +15,7 @@ public class PlayerController : NetworkBehaviour
     private Animator animator;
     private CharacterController cc;
 
-    [SyncVar] private Vector2 moveVector = Vector2.zero;
+    private Vector2 moveVector = Vector2.zero;
     private Vector2 moveVectorTarget;
     private Vector2 mouseDeltaPos = Vector2.zero;
     private float moveSpeed = 2f;
@@ -47,17 +46,13 @@ public class PlayerController : NetworkBehaviour
 
     void Update()
     {
+        MoveOrder();    // 이동  
+        RotateOrder();  // 캐릭터 및 총기 회전
 
-        if (isLocalPlayer)
-        {
-            MoveOrder();    // 이동  
-            RotateOrder();  // 캐릭터 및 총기 회전
+        fireDelay += Time.deltaTime;
+        GunFire();      // 발사
 
-            fireDelay += Time.deltaTime;
-            GunFire();      // 발사
-
-            SetVCamPriority();
-        }
+        SetVCamPriority();
     }
 
     void SetVCamPriority()
@@ -68,7 +63,7 @@ public class PlayerController : NetworkBehaviour
 
     private void LateUpdate()
     {
-        if (isLocalPlayer) CamRotate();    // 카메라 회전
+        CamRotate();    // 카메라 회전
     }
 
     private void MoveOrder()
@@ -109,7 +104,7 @@ public class PlayerController : NetworkBehaviour
 
     void RotateOrder()
     {
-        Vector3 direction = (tpsPos.transform.forward).normalized;
+        Vector3 direction = (tpsVCam.transform.forward).normalized;
 
         Quaternion rotationWeapon = Quaternion.LookRotation(direction);
         rotationWeapon = Quaternion.Euler(rotationWeapon.eulerAngles.x - 10f, this.transform.rotation.eulerAngles.y, rotationWeapon.eulerAngles.z);
@@ -123,7 +118,7 @@ public class PlayerController : NetworkBehaviour
 
     void SetCamType(bool isFps)
     {
-        if (isFps && isLocalPlayer)
+        if (isFps)
         {
             fpsVCam.Priority = 21;
         }
@@ -158,11 +153,8 @@ public class PlayerController : NetworkBehaviour
 
     void Reload()
     {
-        if (isLocalPlayer)
-        { 
-            animator.SetTrigger("Reload");
-            StartCoroutine(ReloadEnd());
-        }
+        animator.SetTrigger("Reload");
+        StartCoroutine(ReloadEnd());
     }
 
     IEnumerator ReloadEnd()
@@ -176,18 +168,13 @@ public class PlayerController : NetworkBehaviour
 
     void OnMove(InputValue inputValue) // 이동(WASD)
     {
-        Debug.Log($"isLocalPlayer : {isLocalPlayer}");
-        if (isLocalPlayer)
-            moveVectorTarget = inputValue.Get<Vector2>();//인풋 벡터 받아옴
+        moveVectorTarget = inputValue.Get<Vector2>();//인풋 벡터 받아옴
     }
 
     void OnSprint(InputValue inputValue)
     {
-        if (isLocalPlayer)
-        {
-            float value = inputValue.Get<float>();
-            moveSpeed = (value * 2f) + 2f;
-        }
+        float value = inputValue.Get<float>();
+        moveSpeed = (value * 2f) + 2f;
     }
 
     void OnFire(InputValue inputValue)

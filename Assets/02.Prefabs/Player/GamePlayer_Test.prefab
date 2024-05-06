@@ -934,6 +934,7 @@ GameObject:
   - component: {fileID: 5764996553141441441}
   - component: {fileID: 5764996553141441455}
   - component: {fileID: 5764996553141441440}
+  - component: {fileID: 1788610473664110191}
   m_Layer: 0
   m_Name: GamePlayer_Test
   m_TagString: Player
@@ -990,6 +991,23 @@ MonoBehaviour:
   syncDirection: 0
   syncMode: 0
   syncInterval: 0
+--- !u!114 &1788610473664110191
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5764996553141441442}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea6edb22ea52ad248bb901a558f99d3d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHp: 100
+  currentHp: 0
+  animator: {fileID: 5764996553539509007}
+  chracterController: {fileID: 5764996553539508992}
+  playerController: {fileID: 5764996553539508995}
 --- !u!1 &5764996553180583015
 GameObject:
   m_ObjectHideFlags: 0
@@ -1956,6 +1974,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHp: 100
   currentHp: 0
+  animator: {fileID: 0}
+  chracterController: {fileID: 0}
+  playerController: {fileID: 0}
 --- !u!114 &5764996553539509003
 MonoBehaviour:
   m_ObjectHideFlags: 0

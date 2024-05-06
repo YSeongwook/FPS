@@ -1,6 +1,3 @@
-using EnumTypes;
-using EventLibrary;
-using System.Collections;
 using UnityEngine;
 
 public class HitArm : MonoBehaviour
@@ -15,7 +12,6 @@ public class HitArm : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        Debug.Log(collision.collider.tag);
         if (collision.collider.tag == bulletTag)
         {
             ShowBloodEffect(collision);
@@ -49,7 +45,7 @@ public class HitArm : MonoBehaviour
         else
         {
             Status status = gameObject.transform.root.GetComponent<Status>();
-            status.DamagedArm();
+            if (status != null) status.DamagedArm();
         }
     }
 }

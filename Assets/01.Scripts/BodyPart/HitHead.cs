@@ -14,7 +14,6 @@ public class HitHead : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        //Debug.Log(collision.collider.tag);
         if (collision.collider.tag == bulletTag)
         {
             ShowBloodEffect(collision);
@@ -48,7 +47,7 @@ public class HitHead : MonoBehaviour
         else
         {
             Status status = gameObject.transform.root.GetComponent<Status>();
-            status.DamagedHead();
+            if (status != null) status.DamagedHead();
         }
     }
 }

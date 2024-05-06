@@ -47,13 +47,11 @@ public class EnemyFire : MonoBehaviour
         wsReload = new WaitForSeconds(realoadTime);
     }
 
-    
-
     void Update()
     {
         var player = FindObjectOfType<PlayerController>();
         playerTr = player.GetComponent<Transform>();
-        Debug.Log(playerTr.position);
+        // Debug.Log(playerTr.position);
         if (!isReload && isFire)
         {
             if(Time.time >= nextFire)

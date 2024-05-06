@@ -13,7 +13,6 @@ public class HitLeg : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        //Debug.Log(collision.collider.tag);
         if (collision.collider.tag == bulletTag)
         {
             ShowBloodEffect(collision);
@@ -47,7 +46,7 @@ public class HitLeg : MonoBehaviour
         else
         {
             Status status = gameObject.transform.root.GetComponent<Status>();
-            status.DamagedLeg();
+            if (status != null) status.DamagedLeg();
         }
     }
 }

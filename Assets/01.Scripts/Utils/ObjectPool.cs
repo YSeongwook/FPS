@@ -66,6 +66,7 @@ public class ObjectPool : Singleton<ObjectPool>
             objectPools[itemType].count++;
         }
     }
+
     public void EnqueueObject(GameObject item)  //사용한 것은 큐에 다시 인큐, Destroy를 대체
     {
         string itemType = item.name;
@@ -76,6 +77,7 @@ public class ObjectPool : Singleton<ObjectPool>
         item.transform.SetParent(objectPools[itemType].transform);
         objectPools[itemType].queue.EnqueuePool(item.GetComponent<Component>());
     }
+
     public void AllDestroyObject(GameObject prefab) // prefab과 같은 타입의 모든 오브젝트를 큐에 다시 인큐
     {
         string itemType = prefab.name;
@@ -101,7 +103,9 @@ public class ObjectPool : Singleton<ObjectPool>
         {
             CreatePool(prefab); // 자동으로 풀을 생성
         }
+
         Component? dequeneObject = objectPools[itemType].queue.DequeuePool();
+
         // 디큐 시도, 큐에 있는 모든 아이템이 사용 중일경우 null을 반환
         if (dequeneObject != null)  // 큐에 오브젝트가 있을 경우
         {

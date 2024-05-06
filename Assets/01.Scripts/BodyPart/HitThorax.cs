@@ -48,7 +48,7 @@ public class HitThorax : MonoBehaviour
         else
         {
             Status status = gameObject.transform.root.GetComponent<Status>();
-            status.DamagedThorax();
+            if (status != null) status.DamagedThorax();
         }
     }
 }
