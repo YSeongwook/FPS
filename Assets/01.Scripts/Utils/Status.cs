@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 using Mirror;
 
 public class Status : NetworkBehaviour, IDamaged
@@ -9,6 +10,9 @@ public class Status : NetworkBehaviour, IDamaged
     public float currentHp;
 
     private string lastHitBodyPart;
+
+    [SerializeField]
+    private Image healthBar; // HP 바를 위한 Image 컴포넌트 참조
 
     public Animator animator;
     public CharacterController chracterController;
@@ -25,8 +29,11 @@ public class Status : NetworkBehaviour, IDamaged
 
     void Start()
     {
+        healthBar = GameObject.Find("HP Bar").GetComponent<Image>();
         // 체력 초기화
         currentHp = maxHp;
+        // 게임 시작 시 HP 바 업데이트
+        UpdateHealthBar(); 
     }
 
     public void OnHpChange(float oldHp, float newHp)
@@ -34,6 +41,7 @@ public class Status : NetworkBehaviour, IDamaged
         Debug.Log($"HP changed from {oldHp} to {newHp}");
         // 로그를 추가하여 클라이언트에서 실행되는지 확인
         Debug.Log("HP Change detected on " + (isServer ? "Server" : "Client"));
+        UpdateHealthBar();
         if (newHp <= 0 && oldHp > 0) // 체력이 0 이하로 떨어진 경우
         {
             CheckDeathBodyPart(lastHitBodyPart); // 마지막으로 피격된 부위에 따른 사망 애니메이션
@@ -179,4 +187,14 @@ public class Status : NetworkBehaviour, IDamaged
     {
         TakeDamage(damage, hitBodyPart);
     }
+
+    // HP 바를 업데이트하는 함수
+    void UpdateHealthBar()
+    {
+        if (healthBar != null)
+        {
+            healthBar.fillAmount = currentHp / maxHp;
+        }
+    }
+
 }

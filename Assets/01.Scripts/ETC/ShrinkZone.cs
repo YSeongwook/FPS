@@ -12,7 +12,7 @@ public class ShrinkZone : NetworkBehaviour
 
     void Update()
     {
-        if (!isServer) return;
+        //if (!isServer) return;
 
         if (transform.localScale.x > minSize && transform.localScale.y > minSize && transform.localScale.z > minSize)
         {
