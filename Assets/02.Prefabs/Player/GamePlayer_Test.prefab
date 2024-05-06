@@ -1008,6 +1008,8 @@ MonoBehaviour:
   animator: {fileID: 5764996553539509007}
   chracterController: {fileID: 5764996553539508992}
   playerController: {fileID: 5764996553539508995}
+  audioListener: {fileID: 5560427908447788218}
+  tpsPos: {fileID: 5764996552880526037}
 --- !u!1 &5764996553180583015
 GameObject:
   m_ObjectHideFlags: 0
@@ -1693,6 +1695,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5764996553459419687}
+  - component: {fileID: 5560427908447788218}
   m_Layer: 0
   m_Name: Head
   m_TagString: Untagged
@@ -1718,6 +1721,14 @@ Transform:
   m_Father: {fileID: 5764996554245089552}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!81 &5560427908447788218
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5764996553459419736}
+  m_Enabled: 1
 --- !u!1 &5764996553495596027
 GameObject:
   m_ObjectHideFlags: 0
@@ -1764,7 +1775,6 @@ GameObject:
   - component: {fileID: 5764996553539508993}
   - component: {fileID: 5764996553539508994}
   - component: {fileID: 5764996553539508995}
-  - component: {fileID: 5764996553539509005}
   - component: {fileID: 5764996553539509003}
   - component: {fileID: 5764996553539509004}
   m_Layer: 0
@@ -1959,24 +1969,8 @@ MonoBehaviour:
   bullet: {fileID: 1003485616670832, guid: 286d72a07d877924eb1f9ef783716ee5, type: 3}
   bullet_Shell: {fileID: 131604, guid: 8698f59a8ea9a0c449a001968fa1db7f, type: 3}
   shell: 30
+  canSprint: 0
   crossHair: {fileID: 5766257424908394281}
---- !u!114 &5764996553539509005
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5764996553539508997}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ea6edb22ea52ad248bb901a558f99d3d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxHp: 100
-  currentHp: 0
-  animator: {fileID: 0}
-  chracterController: {fileID: 0}
-  playerController: {fileID: 0}
 --- !u!114 &5764996553539509003
 MonoBehaviour:
   m_ObjectHideFlags: 0

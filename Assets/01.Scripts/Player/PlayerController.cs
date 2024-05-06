@@ -1,5 +1,6 @@
 using Cinemachine;
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -18,7 +19,6 @@ public class PlayerController : MonoBehaviour
     private Vector2 moveVector = Vector2.zero;
     private Vector2 moveVectorTarget;
     private Vector2 mouseDeltaPos = Vector2.zero;
-    private float moveSpeed = 2f;
     private bool isFire = false;
     private bool isZoom = false;
 
@@ -27,8 +27,25 @@ public class PlayerController : MonoBehaviour
     public GameObject bullet_Shell;
     public int shell = 30;
 
+    [Header("Speed")]
+    private float moveSpeed = 2f;
+    private float delayCount = 1f;
+
+    public float MoveSpeed
+    {
+        get { return moveSpeed; }
+        set { moveSpeed = value; }
+    }
+
+    public float DelayCount
+    {
+        get { return delayCount; }
+        set { delayCount = value; }
+    }
+
+    public bool canSprint;
+
     private float fireDelay = 0;
-    private float delayCount = 0.1f;
     private bool isReload = false;
 
     [Header("Zoom")]
@@ -42,6 +59,8 @@ public class PlayerController : MonoBehaviour
         Cursor.visible = false;
 
         SetCamType(false);
+
+        canSprint = true;
     }
 
     void Update()
@@ -174,7 +193,11 @@ public class PlayerController : MonoBehaviour
     void OnSprint(InputValue inputValue)
     {
         float value = inputValue.Get<float>();
-        moveSpeed = (value * 2f) + 2f;
+        if (canSprint)
+        {
+            moveSpeed = (value * 2f) + 2f;
+            // isSprint = true;
+        }
     }
 
     void OnFire(InputValue inputValue)
