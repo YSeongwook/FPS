@@ -4309,7 +4309,6 @@ MonoBehaviour:
   isDie: 0
   changeMaterial: {fileID: 2100000, guid: 47be28ae53899c440a4bdc7de32df96c, type: 2}
   changeMaterialTime: 2
-  audioDelayTime: 0
 --- !u!114 &4536181032298380727
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4337,6 +4336,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b0e21cc561b2bd4b80ebb226d49370c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gunShot: {fileID: 3270287185889406063}
+  reload: {fileID: 683674566938608646}
   isFire: 0
   bullet: {fileID: 1003485616670832, guid: 2298236a23b5c4349b5f8204068aadf3, type: 3}
   bullet_Shell: {fileID: 131604, guid: 8698f59a8ea9a0c449a001968fa1db7f, type: 3}

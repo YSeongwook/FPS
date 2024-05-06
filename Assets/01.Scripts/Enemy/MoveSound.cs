@@ -2,7 +2,6 @@ using UnityEngine;
 
 public class MoveSound : MonoBehaviour
 {
-    
     public AudioSource PatrolRightFoot;
     public AudioSource PatrolLeftFoot;
     public AudioSource TraceRightFoot;
@@ -24,5 +23,4 @@ public class MoveSound : MonoBehaviour
     {
         TraceLeftFoot.PlayOneShot(TraceLeftFoot.clip);
     }
-
 }
