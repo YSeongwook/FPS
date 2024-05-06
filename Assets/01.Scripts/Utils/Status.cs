@@ -27,7 +27,7 @@ public class Status : MonoBehaviour, IDamaged
     public void TakeDamge(float damage, string hitBodyPart)
     {
         currentHp -= damage;
-        Debug.Log($"playerHP: {currentHp}");
+        Debug.Log($"Player HP: {currentHp}");
 
         if(currentHp <= 0 && isAlive)
         {
@@ -117,8 +117,6 @@ public class Status : MonoBehaviour, IDamaged
                 animator.SetTrigger("Death_Top");
                 break;
             case "Thorax":
-                animator.SetTrigger("Death_Middle");
-                break;
             case "Arm":
                 animator.SetTrigger("Death_Middle");
                 break;

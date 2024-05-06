@@ -14,9 +14,22 @@ public class MoveAgent : MonoBehaviour
     private NavMeshAgent agent;
     private Transform enemyTr;
 
-    private readonly float patrollSpeed = 1.5f;
-    private readonly float traceSpeed = 3.0f;
     private float damping = 1.0f;
+
+    private float moveSpeed = 1.5f;
+
+    public float MoveSpeed
+    {
+        get
+        {
+            return moveSpeed;
+        }
+
+        set
+        {
+            moveSpeed = value;
+        }
+    }
 
     private bool _patrolling;
 
@@ -28,7 +41,8 @@ public class MoveAgent : MonoBehaviour
             _patrolling = value;
             if (_patrolling)
             {
-                agent.speed = patrollSpeed;
+                // agent.speed = patrollSpeed;
+                agent.speed = moveSpeed;
                 damping = 1.0f;
                 MoveWayPoint();
             }
@@ -43,7 +57,8 @@ public class MoveAgent : MonoBehaviour
         set
         {
             _traceTarget = value;
-            agent.speed = traceSpeed;
+            // agent.speed = traceSpeed;
+            agent.speed = moveSpeed * 2;
             damping = 7.0f;
             TraceTarget(_traceTarget);
         }
@@ -68,7 +83,7 @@ public class MoveAgent : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
         agent.autoBraking = false;
         agent.updateRotation = false;
-        agent.speed = patrollSpeed;
+        agent.speed = moveSpeed;
 
         var group = GameObject.Find("WayPointGroup");
 

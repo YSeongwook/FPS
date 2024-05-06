@@ -3947,7 +3947,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b0e21cc561b2bd4b80ebb226d49370c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  randomFireTime: 1
   isFire: 0
   fireSfx: {fileID: 0}
   reloadSfx: {fileID: 0}
@@ -3967,6 +3966,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a6d167c50bc3454ea372d3d89dc6590, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animator: {fileID: 1189425257784159543}
+  agent: {fileID: 1189425257784159541}
   maxHp: 100
   currentHp: 0
 --- !u!114 &4250744543540560762

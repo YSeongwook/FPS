@@ -29,7 +29,7 @@ public class PlayerController : MonoBehaviour
 
     [Header("Speed")]
     private float moveSpeed = 2f;
-    private float delayCount = 1f;
+    private float delayCount = 0.5f;
 
     public float MoveSpeed
     {
