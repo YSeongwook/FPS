@@ -33,6 +33,10 @@ public class PlayerController : NetworkBehaviour
     private float moveSpeed = 2f;
     private float delayCount = 0.5f;
 
+    [Header("Sound")]
+    public AudioSource gunShot;
+    public AudioSource reload;
+
     public float MoveSpeed
     {
         get { return moveSpeed; }
@@ -176,6 +180,7 @@ public class PlayerController : NetworkBehaviour
     {
         if (fireDelay >= delayCount && isFire && shell > 0 && !isReload)
         {
+            gunShot.PlayOneShot(gunShot.clip);
             fireDelay = 0;
             Quaternion fireRotation = Quaternion.Euler(firePos.rotation.eulerAngles.x, firePos.rotation.eulerAngles.y, firePos.rotation.eulerAngles.z);
             CmdFireBullet(firePos.position, fireRotation); // 서버에 발사 요청
@@ -193,6 +198,7 @@ public class PlayerController : NetworkBehaviour
         if (isLocalPlayer)
         {
             animator.SetTrigger("Reload");
+            reload.PlayOneShot(reload.clip);
             StartCoroutine(ReloadEnd());
         }
     }

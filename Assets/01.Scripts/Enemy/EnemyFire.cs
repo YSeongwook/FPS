@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyFire : MonoBehaviour
@@ -13,11 +14,11 @@ public class EnemyFire : MonoBehaviour
     private readonly int hashFire = Animator.StringToHash("Fire");
     private readonly int hashReload = Animator.StringToHash("Reload");
 
-    private float nextFire = 0.0f;
+    private float nextFire = 1.5f;
     private readonly float fireRate = 0.1f;
     private readonly float damping = 10.0f;
 
-    [SerializeField] private readonly float realoadTime = 2.0f;
+    [SerializeField] private readonly float realoadTime = 3.0f;
     [SerializeField] private readonly int maxBullet = 10;
     public float MinFireTime { get; set; }
     public float MaxFireTime { get; set; }
@@ -71,9 +72,9 @@ public class EnemyFire : MonoBehaviour
 
     private void Fire()
     {
-        randomX = (Random.Range(0, 0.3f));
-        randomY = (Random.Range(0, 0.3f));
-        randomFirePos = new Vector3(randomX, 0f, randomY);
+        randomX = (Random.Range(0, 0.8f));
+        randomY = (Random.Range(0, 1.2f));
+        randomFirePos = new Vector3(randomX, randomY, 0);
         animator.SetTrigger(hashFire);
 
         GameObject bulletIst = ObjectPool.Instance.DequeueObject(bullet);

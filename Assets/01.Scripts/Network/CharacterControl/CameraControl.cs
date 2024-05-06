@@ -35,6 +35,10 @@ public class CameraControl : NetworkBehaviour
     [Header("crosshair")]
     public GameObject crosshair;
 
+    [Header("Sound")]
+    public AudioSource gunShot;
+    public AudioSource reload;
+
     private void Start()
     {
         animator = GetComponent<Animator>();
@@ -130,6 +134,7 @@ public class CameraControl : NetworkBehaviour
     {
         if (fireDelay >= delayCount && isFire && shell > 0 && !isReload)
         {
+            gunShot.PlayOneShot(gunShot.clip);
             fireDelay = 0;
 
             GameObject bulletInstance = ObjectPool.Instance.DequeueObject(bullet);
@@ -153,6 +158,7 @@ public class CameraControl : NetworkBehaviour
     {
         if (isLocalPlayer)
         {
+            reload.PlayOneShot(reload.clip);
             animator.SetTrigger("Reload");
             StartCoroutine(ReloadEnd());
         }
