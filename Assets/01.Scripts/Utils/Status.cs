@@ -4,8 +4,11 @@ using Mirror;
 public class Status : NetworkBehaviour, IDamaged
 {
     [SerializeField] protected float maxHp = 100f;
-    [SyncVar]
+    [SyncVar(hook = nameof(OnHpChange))]
     public float currentHp;
+
+    private string lastHitBodyPart;
+
     public Animator animator;
     public CharacterController chracterController;
     public PlayerController playerController;
@@ -23,51 +26,69 @@ public class Status : NetworkBehaviour, IDamaged
         currentHp = maxHp;
     }
 
-    public void TakeDamge(float damage, string hitBodyPart)
+    public void OnHpChange(float oldHp, float newHp)
     {
-        currentHp -= damage;
-        Debug.Log($"playerHP: {currentHp}");
-
-        if(currentHp <= 0)
+        Debug.Log($"HP changed from {oldHp} to {newHp}");
+        // 로그를 추가하여 클라이언트에서 실행되는지 확인
+        Debug.Log("HP Change detected on " + (isServer ? "Server" : "Client"));
+        if (newHp <= 0 && oldHp > 0) // 체력이 0 이하로 떨어진 경우
         {
-            currentHp = 0;
-            CheckDeathBodyPart(hitBodyPart);
-            playerController.enabled = false;   // 플레이어 컨트롤러 스크립트 비활성화
-            chracterController.enabled = false; // 캐릭터 컨트롤러 비활성화
-            // 카메라 포지션 수정
-            // 서버에 사망 알리기
-            // 오디오 리스너 비활성화
-            // UI 전환
+            CheckDeathBodyPart(lastHitBodyPart); // 마지막으로 피격된 부위에 따른 사망 애니메이션
+            playerController.enabled = false;
+            chracterController.enabled = false;
+            // 기타 사망 관련 로직 수행
         }
+    }
 
+
+    [Server]
+    public void TakeDamage(float damage, string hitBodyPart)
+    {
+        if (currentHp > 0)
+        {
+            currentHp -= damage;
+
+            if (currentHp <= 0)
+            {
+                currentHp = 0;
+                RpcPlayDeathAnimation(hitBodyPart); // 모든 클라이언트에 사망 애니메이션을 실행하도록 요청
+                playerController.enabled = false;
+                chracterController.enabled = false;
+            }
+        }
     }
 
     public void DamagedHead()
     {
         // 즉사
-        TakeDamge(maxHp, "Head");
+        RequestDamage(maxHp, "Head");
     }
 
     public void DamagedThorax()
     {
-        TakeDamge(50, "Thorax");
+        RequestDamage(50, "Thorax");
         // 뛰지 못하게
     }
 
     public void DamagedArm()
     {
-        TakeDamge(20, "Arm");
+        RequestDamage(20, "Arm");
         // 공격 속도 절반
     }
 
     public void DamagedLeg()
     {
-        TakeDamge(20, "Leg");
+        RequestDamage(20, "Leg");
         // 이동 속도 절반
     }
 
-    // 어느 부위에 맞아 사망했는지 판별
+    [ClientRpc]
+    public void RpcPlayDeathAnimation(string hitBodyPart)
+    {
+        CheckDeathBodyPart(hitBodyPart);
+    }
 
+    // 어느 부위에 맞아 사망했는지 판별
     public void CheckDeathBodyPart(string hitBodyPart)
     {
         switch(hitBodyPart)
@@ -88,5 +109,23 @@ public class Status : NetworkBehaviour, IDamaged
                 Debug.LogWarning("Unknown body part hit.");
                 break;
         }
+    }
+
+    public void RequestDamage(float damage, string hitBodyPart)
+    {
+        if (isServer)
+        {
+            TakeDamage(damage, hitBodyPart);
+        }
+        else
+        {
+            CmdRequestDamage(damage, hitBodyPart);
+        }
+    }
+
+    [Command]
+    public void CmdRequestDamage(float damage, string hitBodyPart)
+    {
+        TakeDamage(damage, hitBodyPart);
     }
 }
