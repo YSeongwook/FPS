@@ -1990,7 +1990,7 @@ GameObject:
   - component: {fileID: 30116719731225373}
   - component: {fileID: 5240488552687681234}
   m_Layer: 0
-  m_Name: GamePlayer_Test
+  m_Name: GamePlayer_Test 1
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
