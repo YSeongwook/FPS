@@ -1006,7 +1006,7 @@ MonoBehaviour:
   syncDirection: 0
   syncMode: 0
   syncInterval: 0
-  maxHp: 100
+  maxHp: 1000
   currentHp: 0
   animator: {fileID: 5764996553539509007}
   chracterController: {fileID: 5764996553539508992}
@@ -1977,6 +1977,13 @@ MonoBehaviour:
   bullet_Shell: {fileID: 131604, guid: 8698f59a8ea9a0c449a001968fa1db7f, type: 3}
   shell: 30
   canSprint: 0
+  HandGrenade: {fileID: 1000582683020524, guid: 1ddc1d0c706325d4ab53c03f00f0520d, type: 3}
+  Hand: {fileID: 5764996553540815232}
+  grenadeInstance: {fileID: 0}
+  Grenadeint: 2
+  throwTime: 1
+  isGreanade: 0
+  startGreande: 0
   crossHair: {fileID: 5766257424908394281}
 --- !u!114 &5764996553539509003
 MonoBehaviour:

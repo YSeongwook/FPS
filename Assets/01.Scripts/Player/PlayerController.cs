@@ -50,6 +50,15 @@ public class PlayerController : NetworkBehaviour
     private float fireDelay = 0;
     private bool isReload = false;
 
+    [Header("Grenade")]
+    public GameObject HandGrenade;
+    public GameObject Hand;
+    public GameObject grenadeInstance;
+    public int Grenadeint = 2;
+    public float throwTime = 1;
+    public bool isGreanade = false;
+    public bool startGreande = false;
+
     [Header("Zoom")]
     public GameObject crossHair;
 
@@ -77,6 +86,7 @@ public class PlayerController : NetworkBehaviour
             GunFire();      // 발사
 
             SetVCamPriority();
+            GrenadeTimer();
         }
     }
 
@@ -267,6 +277,57 @@ public class PlayerController : NetworkBehaviour
         {
             isReload = true;
             Reload();
+        }
+    }
+
+    void OnGreande(InputValue inputValue)
+    {
+
+        if (!isReload && !isFire && !isGreanade && Grenadeint > 0)
+        {
+            isGreanade = true;
+            Grenade();
+        }
+
+    }
+    void Grenade()
+    {
+        Hand.SetActive(false);
+        animator.SetTrigger("Grenade");
+        StartCoroutine(GreandeEnd());
+    }
+    IEnumerator GreandeEnd()
+    {
+        grenadeInstance = ObjectPool.Instance.DequeueObject(HandGrenade);
+        Grenade GrenadeScript = grenadeInstance.GetComponent<Grenade>();
+        GrenadeScript.Hand = Hand;
+        GrenadeScript.inHand = true;
+        grenadeInstance.transform.position = Hand.transform.position;
+        yield return new WaitForSeconds(2f);
+        isGreanade = false;
+        Grenadeint--;
+        Hand.SetActive(true);
+        throwTime = 1;
+        //UiManager.Instance.transGrenade(Grenadeint);
+    }
+    void Fin()
+    {
+        Debug.Log("finforPlayer");
+        Grenade a = grenadeInstance.GetComponent<Grenade>();
+        a.Fin();
+
+    }
+    void Trhow()
+    {
+        Debug.Log("Trhowforplayer");
+        Grenade a = grenadeInstance.GetComponent<Grenade>();
+        a.Trhow(throwTime);
+    }
+    void GrenadeTimer()
+    {
+        if (Keyboard.current.digit4Key.isPressed && isGreanade)
+        {
+            throwTime += Time.deltaTime * 2;
         }
     }
 }
