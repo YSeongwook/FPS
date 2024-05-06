@@ -210,7 +210,7 @@ public class Status : NetworkBehaviour, IDamaged
     // HP 바를 업데이트하는 함수
     void UpdateHealthBar()
     {
-        if (healthBar != null)
+        if (healthBar != null && isLocalPlayer)
         {
             healthBar.fillAmount = currentHp / maxHp;
         }
