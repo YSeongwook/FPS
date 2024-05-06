@@ -19,7 +19,7 @@ public class EnemyAI : MonoBehaviour
 
     private Animator animator;
     private MoveAgent moveAgent;
-    private EnemyFire enemyFire;
+    private EnemyFire enemyFire;    
 
     public float attackDist = 8.0f; // 공격 거리
     public float traceDis = 15.0f;  // 쫓아가는 거리
@@ -129,11 +129,14 @@ public class EnemyAI : MonoBehaviour
             }
         }
     }
+    
 
     void Update()
     {
         animator.SetFloat(hashSpeed, moveAgent.speed);
     }
+
+
 
     // 사망 시 Material 변경
     IEnumerator TransitionMaterialColor()
