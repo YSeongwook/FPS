@@ -45,16 +45,26 @@ public class FPSRoomManager : NetworkRoomManager
         base.ServerChangeScene(newSceneName);
     }
 
+    public override void OnServerSceneChanged(string sceneName)
+    {
+        base.OnServerSceneChanged(sceneName);
+        foreach (NetworkConnection conn in NetworkServer.connections.Values)
+        {
+            if (conn.identity != null)
+            {
+                Vector3 spawnPos = FindObjectOfType<SpawnPositions>().GetSpawnPosition();
+                conn.identity.transform.position = spawnPos;
+            }
+        }
+    }
+
+    //public override void OnServerAddPlayer(NetworkConnection conn, AddPlayerMessage extraMessage)
+    //{
+    //    base.OnServerAddPlayer(conn, extraMessage); // 기본 플레이어 생성 로직 실행
+    //
+    //    // 스폰 위치 동적으로 가져오기
+    //    Vector3 spawnPos = FindObjectOfType<SpawnPositions>().GetSpawnPosition();
+    //    GameObject player = Instantiate(playerPrefab, spawnPos, Quaternion.identity);
+    //    NetworkServer.AddPlayerForConnection(conn, player);
+    //}
 }
-
-
-//public override void OnRoomServerConnect(NetworkConnectionToClient conn)
-//{
-//    base.OnRoomServerConnect(conn);
-//
-//    Vector3 spawnPos = FindObjectOfType<SpawnPositions>().GetSpawnPosition();
-//
-//    var player = Instantiate(spawnPrefabs[0], spawnPos, Quaternion.identity);
-//    NetworkServer.AddPlayerForConnection(conn, player);
-//    //NetworkServer.Spawn(player, conn);
-//}

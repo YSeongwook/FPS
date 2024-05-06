@@ -46,7 +46,7 @@ public class ObjectPool : Singleton<ObjectPool>
     // 생성할 프리팹 타입은 string으로 검사
     // 이름이 같으면 동일한 프리팹으로 취급하기 때문에 이름 설정에 주의
 
-    public void CreatePool(GameObject prefab, int count = 20) //풀을 count만큼 생성.
+    public void CreatePool(GameObject prefab, int count = 100) //풀을 count만큼 생성.
     {
         string itemType = prefab.name;
         if (!objectPools.ContainsKey(itemType)) //  키가 없을 경우
