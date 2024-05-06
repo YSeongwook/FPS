@@ -1,14 +1,16 @@
 using UnityEngine;
+using Mirror;
 
-public class Status : MonoBehaviour, IDamaged
+public class Status : NetworkBehaviour, IDamaged
 {
     [SerializeField] protected float maxHp = 100f;
-    [SerializeField] protected float currentHp;
+    [SyncVar]
+    public float currentHp;
     public Animator animator;
     public CharacterController chracterController;
     public PlayerController playerController;
 
-    public float CurrentHp { get { return currentHp; } set { currentHp = value; } }
+    //public float CurrentHp { get { return currentHp; } set { currentHp = value; } }
 
     private void Awake()
     {
