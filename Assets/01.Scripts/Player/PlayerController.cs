@@ -137,38 +137,37 @@ public class PlayerController : NetworkBehaviour
     [Command]
     void CmdFireBullet(Vector3 position, Quaternion rotation)
     {
-        GameObject bulletInstance = Instantiate(bullet, position, rotation);
+        GameObject bulletInstance = ObjectPool.Instance.DequeueObject(bullet);
+        if (bulletInstance == null)
+        {
+            bulletInstance = Instantiate(bullet, position, rotation); // 풀이 비어있으면 새로 생성
+        }
+        else
+        {
+            bulletInstance.transform.position = position;
+            bulletInstance.transform.rotation = rotation;
+        }
+
         bulletInstance.GetComponent<Rigidbody>().velocity = bulletInstance.transform.forward * 500;
         NetworkServer.Spawn(bulletInstance);
     }
+
 
     void GunFire()
     {
         if (fireDelay >= delayCount && isFire && shell > 0 && !isReload)
         {
             fireDelay = 0;
-
-            //GameObject bulletInstance = ObjectPool.Instance.DequeueObject(bullet);
-            //GameObject bulletInstance = Instantiate(bullet, position, rotation);
-
-            //bulletInstance.transform.position = firePos.position;
-
-            // 발사 각도를 조정하여 목표 회전 각도를 계산
             Quaternion fireRotation = Quaternion.Euler(firePos.rotation.eulerAngles.x, firePos.rotation.eulerAngles.y, firePos.rotation.eulerAngles.z);
-
-            CmdFireBullet(firePos.position, fireRotation);
-
-            //bulletInstance.transform.rotation = fireRotation;
-
-            //bulletInstance.GetComponent<Rigidbody>().velocity = bulletInstance.transform.forward * 500;
+            CmdFireBullet(firePos.position, fireRotation); // 서버에 발사 요청
 
             EffectManager.Instance.FireEffectGenenate(firePos.position, firePos.rotation);
             mouseDeltaPos = new Vector2(Random.Range(-1f, 1f), Random.Range(1f, 3f));
-
             animator.SetTrigger("Fire");
             shell--;
         }
     }
+
 
     void Reload()
     {
