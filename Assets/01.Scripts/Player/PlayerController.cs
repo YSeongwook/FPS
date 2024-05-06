@@ -316,6 +316,7 @@ public class PlayerController : NetworkBehaviour
         throwTime = 1;
         //UiManager.Instance.transGrenade(Grenadeint); 
     }
+
     void Fin()
     {
         Debug.Log("finforPlayer");
@@ -323,17 +324,19 @@ public class PlayerController : NetworkBehaviour
         a.Fin();
 
     }
+
     void Trhow()
     {
         Debug.Log("Trhowforplayer");
         Grenade a = grenadeInstance.GetComponent<Grenade>();
         a.Trhow(throwTime);
     }
+
     void GrenadeTimer()
     {
         if (Keyboard.current.digit4Key.isPressed && isGreanade)
         {
-            throwTime += Time.deltaTime * 2;
+            throwTime += Time.deltaTime * 0.3f;
         }
     }
 }

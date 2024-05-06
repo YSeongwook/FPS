@@ -77471,7 +77471,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletHitEffect: {fileID: 157586, guid: f90e05b3915c6f4468f37c9c36a2daaf, type: 3}
   bulletFireEffect: {fileID: 157586, guid: 2574ca206a571a342a7fab69fdfb87aa, type: 3}
-  grenadeEffect: {fileID: 1431530912211830, guid: 585a1ef8c48a0cf4f97332139e4344de, type: 3}
+  grenadeEffect: {fileID: 1804206099813350, guid: 5ed0a013702bd9f42847584f2fba7b21, type: 3}
 --- !u!1001 &1776714006
 PrefabInstance:
   m_ObjectHideFlags: 0
