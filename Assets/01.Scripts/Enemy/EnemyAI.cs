@@ -32,6 +32,8 @@ public class EnemyAI : MonoBehaviour
     public Material changeMaterial;
     public float changeMaterialTime = 1f;
 
+    Collider[] childColliders;
+
 
     // 애니메이터 컨트롤러에 정의한 파라미터의 해시 값을 미리 추출
     private readonly int hashMove = Animator.StringToHash("IsMove");
@@ -56,6 +58,8 @@ public class EnemyAI : MonoBehaviour
         // 애니메이션의 시작 프레임과 속도가 다르기 때문에 걸음걸이가 조금씩 다르게
         animator.SetFloat(hashOffeset, Random.Range(0.0f, 1.0f));
         animator.SetFloat(hashWalkSpeed, Random.Range(1.0f, 1.2f));
+
+        childColliders = GetComponentsInChildren<Collider>();
     }
 
     private void OnEnable()
@@ -115,14 +119,16 @@ public class EnemyAI : MonoBehaviour
                     isDie = true;
                     enemyFire.isFire = false;
                     moveAgent.Stop();
-                    // GetComponent<CapsuleCollider>().enabled = false;
-                    animator.SetTrigger(hashDie);
-                    StartCoroutine("TransitionMaterialColor");
+
+                    // 모든 자식 오브젝트의 콜라이더 비활성화
+                    foreach (Collider collider in childColliders)
+                    {
+                        collider.enabled = false;
+                    }
                     break;
             }
         }
     }
-
 
     void Update()
     {

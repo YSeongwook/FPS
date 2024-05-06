@@ -17,7 +17,9 @@ public class EnemyFire : MonoBehaviour
 
     [SerializeField] private readonly float realoadTime = 2.0f;
     [SerializeField] private readonly int maxBullet = 10;
-    [SerializeField] private float randomFireTime = 1f;
+    public float MinFireTime { get; set; }
+    public float MaxFireTime { get; set; }
+
     private int currBullet = 10;
     private bool isReload = false;
 
@@ -45,6 +47,9 @@ public class EnemyFire : MonoBehaviour
         audio = GetComponent<AudioSource>();
 
         wsReload = new WaitForSeconds(realoadTime);
+
+        MinFireTime = 0f;
+        MaxFireTime = 1f;
     }
 
     void Update()
@@ -57,7 +62,7 @@ public class EnemyFire : MonoBehaviour
             if(Time.time >= nextFire)
             {
                 Fire();
-                nextFire = Time.time + fireRate + Random.Range(0.0f, randomFireTime);
+                nextFire = Time.time + fireRate + Random.Range(MinFireTime, MaxFireTime);
             }
 
             // 플레이어 바라보게 

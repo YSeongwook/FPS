@@ -1,6 +1,7 @@
 using Cinemachine;
 using Mirror;
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UIElements;
@@ -20,7 +21,6 @@ public class PlayerController : NetworkBehaviour
     [SyncVar] private Vector2 moveVector = Vector2.zero;
     private Vector2 moveVectorTarget;
     private Vector2 mouseDeltaPos = Vector2.zero;
-    private float moveSpeed = 2f;
     private bool isFire = false;
     private bool isZoom = false;
 
@@ -29,8 +29,25 @@ public class PlayerController : NetworkBehaviour
     public GameObject bullet_Shell;
     public int shell = 30;
 
+    [Header("Speed")]
+    private float moveSpeed = 2f;
+    private float delayCount = 0.5f;
+
+    public float MoveSpeed
+    {
+        get { return moveSpeed; }
+        set { moveSpeed = value; }
+    }
+
+    public float DelayCount
+    {
+        get { return delayCount; }
+        set { delayCount = value; }
+    }
+
+    public bool canSprint;
+
     private float fireDelay = 0;
-    private float delayCount = 0.1f;
     private bool isReload = false;
 
     [Header("Zoom")]
@@ -44,6 +61,8 @@ public class PlayerController : NetworkBehaviour
         UnityEngine.Cursor.visible = false;
 
         SetCamType(false);
+
+        canSprint = true;
     }
 
     void Update()
@@ -199,7 +218,7 @@ public class PlayerController : NetworkBehaviour
         if (isLocalPlayer)
         {
             float value = inputValue.Get<float>();
-            moveSpeed = (value * 2f) + 2f;
+            if(canSprint) moveSpeed = (value * 2f) + 2f;
         }
     }
 
