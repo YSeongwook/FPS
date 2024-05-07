@@ -35,6 +35,8 @@ public class EnemyAI : MonoBehaviour
     Collider[] childColliders;
 
 
+    private float playerHp;
+
     // 애니메이터 컨트롤러에 정의한 파라미터의 해시 값을 미리 추출
     private readonly int hashMove = Animator.StringToHash("IsMove");
     private readonly int hashSpeed = Animator.StringToHash("Speed");
@@ -74,10 +76,16 @@ public class EnemyAI : MonoBehaviour
         {
             var player = FindObjectOfType<PlayerController>();
             //Debug.Log(player);
-            if (player != null) playerTr = player.GetComponent<Transform>();
+            if (player != null) playerTr = player.GetComponent<Transform>();        
             //Debug.Log(playerTr.position);
             if (state == State.DIE) yield break;
 
+            playerHp = player.GetComponentInParent<Status>().currentHp;
+            if (playerHp <= 0)
+            {
+               state =  State.PATROL;
+               yield break ;
+            }
             float dist = Vector3.Distance(playerTr.position, enemyTr.position);
 
             if (dist <= attackDist) state = State.ATTACK;
@@ -113,7 +121,7 @@ public class EnemyAI : MonoBehaviour
                     moveAgent.Stop();
                     animator.SetBool(hashMove, false);
 
-                    if (enemyFire.isFire == false) enemyFire.isFire = true;
+                    if (enemyFire.isFire == false) enemyFire.isFire = true;                 
                     break;
                 case State.DIE:
                     isDie = true;
@@ -136,38 +144,4 @@ public class EnemyAI : MonoBehaviour
         animator.SetFloat(hashSpeed, moveAgent.speed);
     }
 
-
-
-    // 사망 시 Material 변경
-    IEnumerator TransitionMaterialColor()
-    {
-        Material currentMaterial = skinnedMeshRenderer.material;
-
-        float startTime = Time.time;
-        float elapsedTime = 0f;
-
-        while (elapsedTime < changeMaterialTime)
-        {
-            elapsedTime = Time.time - startTime;
-
-            // 보간된 Material 계산
-            Material newMaterial = BlendMaterials(currentMaterial, changeMaterial, elapsedTime / changeMaterialTime);
-
-            // Material 설정
-            skinnedMeshRenderer.material = newMaterial;
-
-            yield return null;
-        }
-
-        // 변경이 완료된 후에 GameObject를 비활성화
-        gameObject.SetActive(false);
-    }
-
-    Material BlendMaterials(Material materialA, Material materialB, float blendFactor)
-    {
-        // Material을 보간합니다.
-        Material blendedMaterial = new Material(materialA);
-        blendedMaterial.Lerp(materialA, materialB, blendFactor);
-        return blendedMaterial;
-    }
 }
