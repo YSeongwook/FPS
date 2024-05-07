@@ -34,6 +34,6 @@ public class LobbyUIManager : MonoBehaviour
     public void OnClickStartButton()
     {
         var manager = NetworkManager.singleton as FPSRoomManager;
-        manager.ServerChangeScene(manager.GameplayScene);
+        //manager.ServerChangeScene(manager.GameplayScene);
     }
 }

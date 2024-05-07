@@ -29,7 +29,7 @@ public class EnemyFire : MonoBehaviour
     private WaitForSeconds wsReload;
 
     public bool isFire = false;
-  
+
     [Header("Bullet")]
     public GameObject bullet;
     public GameObject bullet_Shell;
@@ -41,33 +41,51 @@ public class EnemyFire : MonoBehaviour
     private float randomX;
     private float randomY;
 
+    private Quaternion rot;
+
     void Start()
-    {      
+    {
         enemyTr = GetComponent<Transform>();
         animator = GetComponent<Animator>();
         wsReload = new WaitForSeconds(realoadTime);
 
         MinFireTime = 0f;
         MaxFireTime = 1f;
+
+        StartCoroutine(changeLotation());
     }
 
     void Update()
     {
+
+    }
+
+    IEnumerator changeLotation()
+    {
         var player = FindObjectOfType<PlayerController>();
-        playerTr = player.GetComponent<Transform>();
-        // Debug.Log(playerTr.position);
+        if (player != null)
+        {
+            Transform playerTr = player.GetComponent<Transform>();
+
+            Vector3 directionToPlayer = playerTr.position - enemyTr.position;
+            // 매우 작은 벡터를 체크하기 위해 epsilon 사용
+            if (directionToPlayer.sqrMagnitude > Mathf.Epsilon)
+            {
+                Quaternion targetRotation = Quaternion.LookRotation(directionToPlayer);
+                targetRotation.Normalize();  // Quaternion 정규화
+                enemyTr.rotation = Quaternion.Slerp(enemyTr.rotation, targetRotation, Time.deltaTime * damping);
+            }
+        }
+
         if (!isReload && isFire)
         {
-            if(Time.time >= nextFire)
+            if (Time.time >= nextFire)
             {
                 Fire();
                 nextFire = Time.time + fireRate + Random.Range(MinFireTime, MaxFireTime);
             }
-
-            // 플레이어 바라보게 
-            Quaternion rot = Quaternion.LookRotation(playerTr.position - enemyTr.position);
-            enemyTr.rotation = Quaternion.Slerp(enemyTr.rotation, rot, Time.deltaTime * damping);
         }
+        yield return new WaitForSeconds(3f);
     }
 
     private void Fire()
