@@ -62,7 +62,7 @@ public class Grenade : MonoBehaviour
 
     IEnumerator Boom()
     {
-        yield return new WaitForSecondsRealtime(0.05f);
+        yield return new WaitForSecondsRealtime(0.5f);
         gameObject.GetComponent<Collider>().isTrigger = false;
         Debug.Log("Boom");
         yield return new WaitForSecondsRealtime(3f);
