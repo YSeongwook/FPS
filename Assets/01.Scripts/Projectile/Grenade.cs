@@ -5,7 +5,7 @@ public class Grenade : MonoBehaviour
 {
     public GameObject fin;
     public GameObject clip;
-    public float BoomRaius = 2.5f;
+    public float BoomRaius = 4f;
     public Collider[] cols;
     public int Dmg = 110;
     public bool inHand = false;
@@ -72,12 +72,24 @@ public class Grenade : MonoBehaviour
         ProjectileDisable(transform.position);
         foreach (Collider col in cols)
         {
-            Status status = col.GetComponent<Status>(); //hp매니저를 흭득시도
+            GameObject obj = col.gameObject;
+            GameObject rootObject = col.transform.root.gameObject;
+
+            Status status = rootObject.GetComponent<Status>();
             if (status != null) //hp매니저가 있을시 처리
             {
                 float distance = Vector3.Distance(gameObject.transform.position, col.transform.position);
                 float currentHp = Mathf.Max(0, Dmg - (int)distance * 5); // 거리에따라 데미지감소를 추가하여 데미지감소
                 status.RequestDamage(currentHp, "Thorax");
+            }
+
+            EnemyDamage enemyDamage = rootObject.GetComponent<EnemyDamage>();
+            if(enemyDamage != null)
+            {
+                float distance = Vector3.Distance(gameObject.transform.position, col.transform.position);
+                float currentHp = Mathf.Max(0, Dmg - (int)distance * 5); // 거리에따라 데미지감소를 추가하여 데미지감소
+                enemyDamage.TakeDamge(currentHp, "Thorax");
+                Debug.Log("EnemyinGrenade");
             }
         }
     }
