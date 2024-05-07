@@ -38,14 +38,14 @@ public class Grenade : MonoBehaviour
 
     public void Fin()
     {
-        fin.GetComponent<Rigidbody>().isKinematic = false;
+        //fin.GetComponent<Rigidbody>().isKinematic = false;
     }
 
     public void Trhow(float time)
     {
 
         gameObject.GetComponent<Collider>().isTrigger = true;
-        clip.GetComponent<Rigidbody>().isKinematic = false;
+        //clip.GetComponent<Rigidbody>().isKinematic = false;
         inHand = false;
         GreandeRigid = GetComponent<Rigidbody>();
         GreandeRigid.isKinematic = false;
