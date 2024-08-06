@@ -34,6 +34,7 @@ public class EnemyAI : MonoBehaviour
 
     Collider[] childColliders;
 
+    public GameObject Minimap;
 
     private float playerHp;
 
@@ -127,6 +128,7 @@ public class EnemyAI : MonoBehaviour
                     isDie = true;
                     enemyFire.isFire = false;
                     moveAgent.Stop();
+                    Minimap.SetActive(false);
 
                     // 모든 자식 오브젝트의 콜라이더 비활성화
                     foreach (Collider collider in childColliders)

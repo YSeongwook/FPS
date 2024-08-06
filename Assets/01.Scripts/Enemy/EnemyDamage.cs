@@ -14,6 +14,7 @@ public class EnemyDamage : MonoBehaviour, IDamaged
     private EnemyFire enemyFire;
     private bool isAlive;
 
+
     // 현재 hp 프로퍼티
     public float CurrentHP { get; private set; }
 
