@@ -9,9 +9,9 @@ EditorBuildSettings:
     path: Assets/06.Scenes/Network/Main Menu.unity
     guid: 28999bc572bfbc24ca055e876d0bd92c
   - enabled: 1
-    path: Assets/06.Scenes/Network/Game Room.unity
-    guid: dd4d298a340b89e42b06e95c048fa6ec
-  - enabled: 1
     path: Assets/06.Scenes/Game/Game.unity
     guid: 24b126a8d5b856c49a2e460008e54067
+  - enabled: 1
+    path: Assets/06.Scenes/Network/Game Room.unity
+    guid: dd4d298a340b89e42b06e95c048fa6ec
   m_configObjects: {}

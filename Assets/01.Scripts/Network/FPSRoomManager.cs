@@ -3,15 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using Mirror;
 
-public class FPSRoomManager : NetworkRoomManager
+public class FPSRoomManager : NetworkManager
 {
     public int maxPlayerCount;
     public int minPlayerCount = 1;
     
 
-    public override void OnRoomServerConnect(NetworkConnectionToClient conn)
+    public override void OnServerConnect(NetworkConnectionToClient conn)
     {
-        base.OnRoomServerConnect(conn);
+        base.OnServerConnect(conn);
     
         // 연결에 이미 플레이어가 할당되어 있지 않은 경우에만 실행
         if (conn.identity == null)

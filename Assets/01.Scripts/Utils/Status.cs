@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine;
 using Mirror;
+using UnityEngine.UI;
 
 public class Status : NetworkBehaviour, IDamaged
 {
@@ -16,6 +17,9 @@ public class Status : NetworkBehaviour, IDamaged
     public AudioListener audioListener;
     public GameObject tpsPos;
 
+    public GameObject HPBar;
+    public Image HPBarImage;
+
     // public float CurrentHp { get { return currentHp; } set { currentHp = value; } }
 
     private bool isAlive = true;
@@ -27,6 +31,9 @@ public class Status : NetworkBehaviour, IDamaged
     {
         // 체력 초기화
         currentHp = maxHp;
+
+        HPBar = GameObject.Find("HP Bar");
+        HPBarImage = HPBar.GetComponent<Image>();
     }
 
     public void OnHpChange(float oldHp, float newHp)
@@ -34,6 +41,10 @@ public class Status : NetworkBehaviour, IDamaged
         Debug.Log($"HP changed from {oldHp} to {newHp}");
         // 로그를 추가하여 클라이언트에서 실행되는지 확인
         Debug.Log("HP Change detected on " + (isServer ? "Server" : "Client"));
+
+        if(isLocalPlayer)
+            HPBarImage.fillAmount = newHp/100;
+
         if (newHp <= 0 && oldHp > 0) // 체력이 0 이하로 떨어진 경우
         {
             CheckDeathBodyPart(lastHitBodyPart); // 마지막으로 피격된 부위에 따른 사망 애니메이션

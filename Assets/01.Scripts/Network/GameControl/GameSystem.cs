@@ -17,14 +17,14 @@ public class GameSystem : NetworkBehaviour
         }
     }
 
-    private IEnumerator GameReady()
-    {
-        var manager = NetworkManager.singleton as FPSRoomManager;
-        while(manager.roomSlots.Count != players.Count) 
-        {
-            yield return null;
-        }
-    }
+    //private IEnumerator GameReady()
+    //{
+      //  var manager = NetworkManager.singleton as FPSRoomManager;
+        //while(manager.roomSlots.Count != players.Count) 
+        //{
+            //yield return null;
+        //}
+    //}
 
     private void Awake()
     {

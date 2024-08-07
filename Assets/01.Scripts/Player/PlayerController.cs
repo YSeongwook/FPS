@@ -160,21 +160,36 @@ public class PlayerController : NetworkBehaviour
     [Command]
     void CmdFireBullet(Vector3 position, Quaternion rotation)
     {
-        GameObject bulletInstance = ObjectPool.Instance.DequeueObject(bullet);
-        if (bulletInstance == null)
-        {
-            bulletInstance = Instantiate(bullet, position, rotation); // 풀이 비어있으면 새로 생성
-        }
-        else
-        {
-            bulletInstance.transform.position = position;
-            bulletInstance.transform.rotation = rotation;
-        }
-
-        bulletInstance.GetComponent<Rigidbody>().velocity = bulletInstance.transform.forward * 500;
+        //GameObject bulletInstance = ObjectPool.Instance.DequeueObject(bullet);
+        //if (bulletInstance == null)
+        //{
+        //    bulletInstance = Instantiate(bullet, position, rotation); // 풀이 비어있으면 새로 생성
+        //}
+        //else
+        //{
+        //    bulletInstance.transform.position = position;
+        //    bulletInstance.transform.rotation = rotation;
+        //}
+        NetworkManager networkManager = NetworkManager.singleton as FPSRoomManager;
+        GameObject bulletInstance = Instantiate(networkManager.spawnPrefabs[1], position, rotation);
+        //bulletInstance.GetComponent<Rigidbody>().velocity = bulletInstance.transform.forward * 50000;
+        
         NetworkServer.Spawn(bulletInstance);
+        //bulletRigidbody.AddForce(bulletInstance.transform.forward * 1000, ForceMode.VelocityChange); // 힘 설정
+
+        Rigidbody bulletRigidbody = bulletInstance.GetComponent<Rigidbody>();
+        bulletRigidbody.velocity = bulletInstance.transform.forward * 1000.0f;
+
+        // 초기 속도 설정
+        RpcMoveBullet(bulletInstance);
     }
 
+    [ClientRpc]
+    void RpcMoveBullet(GameObject bulletInstance)
+    {
+        Rigidbody bulletRigidbody = bulletInstance.GetComponent<Rigidbody>();
+        bulletRigidbody.velocity = bulletInstance.transform.forward * 1000.0f;
+    }
 
     void GunFire()
     {
